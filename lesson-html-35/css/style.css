@@ -1,0 +1,24 @@
+* {
+  font-family: Arial, sans-serif;
+
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  
+}
+
+caption, tr, th, td {
+  border: 1px solid #000;
+  padding: 5px;
+}
+
+caption {
+  font-weight: 600;
+  border-bottom: none;
+}
+
+.su, .sa {
+  color: #ff0000;
+}
