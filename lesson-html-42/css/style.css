@@ -22,11 +22,13 @@ textarea {
 
 .checkbox {
   display: block;
+  cursor: pointer;
 
 }
 
 .button {
   cursor: pointer;
 }
+
 
 
