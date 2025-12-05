@@ -1,0 +1,27 @@
+.form {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 5px;
+
+}
+
+input {
+  margin-bottom: 5px;
+}
+
+#name, #number, #tel, #email {
+  width: 250px;
+}
+
+textarea {
+  max-width: 150px;
+  max-height: 100px;
+
+}
+
+.checkbox {
+  display: block;
+
+}
+
