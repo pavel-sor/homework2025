@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Формы html</title>
+    <link href="./css/normalize.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <form class="form" action="form">
+      <fieldset class="form-group">
+        <legend class="form-group-title">Ваши личные данные</legend>
+        <label class="label" for="name">Ваше имя</label>
+        <input
+          id="name"
+          class="input"
+          type="text"
+          placeholder="Имя"
+          name="name"
+          required
+        />
+        <label class="label" for="age">Ваш возраст</label>
+        <input 
+          id="age"
+          class="input"
+          type="number"
+          placeholder="Возраст"
+          name="age"
+          required
+        />
+        <label class="label" for="phone">Ваш номер телефона</label>
+        <input
+          id="phone"
+          class="input"
+          type="tel"
+          placeholder="Номер телефона"
+          name="phone"
+          required
+        />
+        <label class="label" for="email">Ваша почта</label>
+        <input
+          id="email"
+          class="input"
+          type="email"
+          placeholder="Почта"
+          name="email"
+          required
+        />
+      </fieldset>
+      <fieldset class="form-group">
+        <label class="label" for="message">Сообщение</label>
+        <textarea 
+          id="message"
+          class="textarea"
+          placeholder="Ваше сообщение"
+          name="message"
+          required
+        ></textarea>
+        <label class="label checkbox-label" for="checkbox">
+          <input
+            class="checkbox"
+            id="checkbox"
+            type="checkbox"
+            name="checkbox"
+            required
+          />
+          <span class="checkbox-text">Я принимаю правила</span>
+        </label>
+        
+      </fieldset>
+      <button class="button">Отправить</button>
+    </form>
+  </body>
+</html>
