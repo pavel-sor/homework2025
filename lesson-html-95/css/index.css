@@ -44,8 +44,13 @@
 }
 
 .hero-images {
+
   display: flex;
   position: relative;
+}
+
+.hero-img {
+    width: 100%;
 }
 
 .hero-img-hero {
@@ -332,7 +337,7 @@ summary::-webkit-details-marker {
 
 @media (width <= 992px) {
   .faq-img {
-    width: 60%;
+    width: 40%;
   }
 
   .faq__container {
@@ -348,6 +353,10 @@ summary::-webkit-details-marker {
 
 .news-card {
   gap: 14px;
+}
+
+.faq-img {
+  width: 100%;
 }
 
   .faq {
