@@ -12,7 +12,14 @@
   display: flex;
   justify-content: center;
   gap: 28px;
-  height: 513px;
+
+}
+
+.hero-content {
+  /* display: flex; */
+
+
+    /* height: 513px; */
 }
 
 .hero-inner {
@@ -50,10 +57,11 @@
 }
 
 .hero-img {
-    width: 100%;
+    /* width: 100%; */
 }
 
 .hero-img-hero {
+  width: 100%;
   display: flex;
 }
 
@@ -218,7 +226,7 @@ summary::-webkit-details-marker {
 /* ==========================Адаптация========================== */
 @media (width <= 1440px) {
   .hero-images {
-    width: 50%;
+    /* width: 50%; */
   }
 
   .images-text {
@@ -228,7 +236,12 @@ summary::-webkit-details-marker {
 
 @media (width <= 1250px) {
   .hero-images {
+    
     width: 40%;
+  }
+
+  .hero-img-hero {
+    justify-content: center;
   }
 
   .images-text {
@@ -338,6 +351,10 @@ summary::-webkit-details-marker {
 @media (width <= 992px) {
   .faq-img {
     width: 40%;
+  }
+
+  .hero-img {
+    width: 100%;
   }
 
   .faq__container {
