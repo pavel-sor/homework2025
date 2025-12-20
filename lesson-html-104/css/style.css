@@ -1,0 +1,261 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	min-width: 375px;
+	margin: 0;
+	min-height: 100vh;
+	/* Используем Grid для всего body */
+	display: grid;
+	grid-template-columns: 300px 1fr;
+	grid-template-rows: auto 1fr auto;
+	grid-template-areas:
+		"header header"
+		"aside main"
+		"footer footer";
+}
+
+.container {
+	max-width: 1280px;
+	padding: 0 15px;
+	margin: 0 auto;
+	/* Grid для контейнера */
+	display: grid;
+	grid-template-columns: repeat(8, 1fr);
+	grid-template-rows: repeat(4, 200px);
+
+	gap: 20px;
+}
+
+.wrapper {
+	min-height: 100vh;
+	display: contents; /* Разрушаем обертку для работы grid body */
+}
+
+.header {
+	background-color: #f00;
+	min-height: 100px;
+	grid-area: header;
+}
+
+.aside {
+	background-color: #e2e20d;
+	grid-area: aside;
+	width: 300px;
+}
+
+.main {
+	background-color: #31bb0a;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	grid-area: main;
+}
+
+.article {
+	background-color: #de6e05;
+	min-height: 200px;
+}
+
+.article:nth-child(1) {
+	grid-column: 1 / 2 span;
+	grid-row: 1 / 2 span;
+}
+.article:nth-child(2) {
+	grid-column: 3 / 2 span;
+	grid-row: 1 / 2 span;
+}
+.article:nth-child(3) {
+	grid-column: 5 / 2 span;
+	grid-row: 1 / 2 span;
+}
+.article:nth-child(4) {
+	grid-column: 7 / 2 span;
+	grid-row: 1 / 2 span;
+}
+.article:nth-child(5) {
+	grid-column: 1 / 2 span;
+	grid-row: 3 / 2 span;
+}
+.article:nth-child(6) {
+	grid-column: 3 / 2 span;
+	grid-row: 3 / 2 span;
+}
+.article:nth-child(7) {
+	grid-column: 5 / 2 span;
+	grid-row: 3 / 2 span;
+}
+.article:nth-child(8) {
+	grid-column: 7 / 2 span;
+	grid-row: 3 / 2 span;
+}
+
+.footer {
+	background-color: #0b2fe2;
+	min-height: 250px;
+	grid-area: footer;
+}
+
+
+
+/* На ширине 1440px и меньше - элементы переходят на новую строку */
+@media (max-width: 1440px) {
+	.container {
+		grid-template-columns: repeat(6, 1fr); /* 6 колонок вместо 8 */
+		grid-template-rows: repeat(6, 200px); /* больше строк */
+	}
+	
+	/* Перераспределяем элементы: 3 в первом ряду, 3 во втором, 2 в третьем */
+	.article:nth-child(1) {
+		grid-column: 1 / span 2;
+		grid-row: 1 / span 2;
+	}
+	.article:nth-child(2) {
+		grid-column: 3 / span 2;
+		grid-row: 1 / span 2;
+	}
+	.article:nth-child(3) {
+		grid-column: 5 / span 2;
+		grid-row: 1 / span 2;
+	}
+	.article:nth-child(4) {
+		grid-column: 1 / span 2;
+		grid-row: 3 / span 2;
+	}
+	.article:nth-child(5) {
+		grid-column: 3 / span 2;
+		grid-row: 3 / span 2;
+	}
+	.article:nth-child(6) {
+		grid-column: 5 / span 2;
+		grid-row: 3 / span 2;
+	}
+	.article:nth-child(7) {
+		grid-column: 1 / span 2;
+		grid-row: 5 / span 2;
+	}
+	.article:nth-child(8) {
+		grid-column: 3 / span 2;
+		grid-row: 5 / span 2;
+	}
+}
+
+/* На ширине 1024px и меньше */
+@media (max-width: 1250px) {
+	.container {
+		grid-template-columns: repeat(4, 1fr); /* 4 колонки */
+		grid-template-rows: repeat(8, 200px); /* 4 строки (по 2 элемента в строке) */
+	}
+	
+	/* Перераспределяем: по 2 элемента в строке */
+	.article:nth-child(1) {
+		grid-column: 1 / span 2;
+		grid-row: 1 / span 2;
+	}
+	.article:nth-child(2) {
+		grid-column: 3 / span 2;
+		grid-row: 1 / span 2;
+	}
+	.article:nth-child(3) {
+		grid-column: 1 / span 2;
+		grid-row: 3 / span 2;
+	}
+	.article:nth-child(4) {
+		grid-column: 3 / span 2;
+		grid-row: 3 / span 2;
+	}
+	.article:nth-child(5) {
+		grid-column: 1 / span 2;
+		grid-row: 5 / span 2;
+	}
+	.article:nth-child(6) {
+		grid-column: 3 / span 2;
+		grid-row: 5 / span 2;
+	}
+	.article:nth-child(7) {
+		grid-column: 1 / span 2;
+		grid-row: 7 / span 2;
+	}
+	.article:nth-child(8) {
+		grid-column: 3 / span 2;
+		grid-row: 7 / span 2;
+	}
+}
+
+/* На ширине 768px и меньше - адаптация всей страницы */
+@media (max-width: 768px) {
+	body {
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			"header"
+			"aside"
+			"main"
+			"footer";
+	}
+	
+	.aside {
+		width: 100%;
+	}
+	
+	.container {
+		grid-template-columns: repeat(2, 1fr); /* 2 колонки */
+		grid-template-rows: repeat(16, 200px); /* 8 строк */
+	}
+	
+	/* Перераспределяем: по 1 элементу в строке (но занимает 2 колонки) */
+	.article:nth-child(1) {
+		grid-column: 1 / span 2;
+		grid-row: 1 / span 2;
+	}
+	.article:nth-child(2) {
+		grid-column: 1 / span 2;
+		grid-row: 3 / span 2;
+	}
+	.article:nth-child(3) {
+		grid-column: 1 / span 2;
+		grid-row: 5 / span 2;
+	}
+	.article:nth-child(4) {
+		grid-column: 1 / span 2;
+		grid-row: 7 / span 2;
+	}
+	.article:nth-child(5) {
+		grid-column: 1 / span 2;
+		grid-row: 9 / span 2;
+	}
+	.article:nth-child(6) {
+		grid-column: 1 / span 2;
+		grid-row: 11 / span 2;
+	}
+	.article:nth-child(7) {
+		grid-column: 1 / span 2;
+		grid-row: 13 / span 2;
+	}
+	.article:nth-child(8) {
+		grid-column: 1 / span 2;
+		grid-row: 15 / span 2;
+	}
+}
+
+/* На очень маленьких экранах - упрощаем */
+@media (max-width: 480px) {
+	.container {
+		grid-template-columns: 1fr; /* 1 колонка */
+		grid-template-rows: repeat(16, 200px);
+		gap: 10px;
+	}
+	
+	/* Каждый article занимает всю ширину */
+	.article:nth-child(1),
+	.article:nth-child(2),
+	.article:nth-child(3),
+	.article:nth-child(4),
+	.article:nth-child(5),
+	.article:nth-child(6),
+	.article:nth-child(7),
+	.article:nth-child(8) {
+		grid-column: 1;
+		grid-row: span 2;
+	}
+}
+
