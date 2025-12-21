@@ -1,0 +1,148 @@
+.article {
+  padding-top: 80px;
+  padding-bottom: 120px;
+}
+
+.article__section_mb_large {
+  margin-bottom: 80px;
+}
+
+.article__subtitle_size_large {
+  font-size: 36px;
+}
+
+.article__text {
+  margin-bottom: 20px;
+
+}
+
+.article__text:last-child {
+  margin-bottom: 0;
+}
+
+.article__container {
+  margin-bottom: 80px;
+}
+
+.article__subtitle_size_large {
+  margin-bottom: 40px;
+}
+
+.article__decor-wrapper {
+  position: relative;
+}
+
+.article__decor-wrapper_type_first::before {
+  top: 100px;
+  left: 0;
+}
+
+.article__decor-wrapper_type_second::before {
+  right: 0;
+  bottom: 136px;
+}
+
+.article-list {
+  margin-top: 0;
+  padding-left: 16px;
+}
+
+.article__list-item:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+.article__list-item::marker {
+  font-size: 22px;
+  color: #3596ed;
+}
+
+.article__image {
+  width: 100%;
+}
+
+.article__play-button {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  background-color: #3596ed;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1;
+  transform: translate(-50%, 50%);
+  transition: opacity 0.2s, background-color 0.2s;
+  
+}
+
+.article__play-button img {
+  transform: translateX(15%);
+}
+
+.article__play-button:hover {
+  opacity: 0.85;
+  background-color: #38a2ff;
+}
+
+.article__play-button:not(:disabled):active {
+  background-color: #2d82cd;
+}
+
+.article__ps {
+  margin-top: 40px;
+}
+
+@media (width <= 940px) {
+  .article {
+    padding-bottom: 80px;
+  }
+}
+
+@media (width <= 768px) {
+.article {
+    padding-bottom: 60px;
+  }
+
+  .article__decor-wrapper::before {
+    display: none;
+  }
+
+  .article__container {
+    margin-bottom: 60px;
+  }
+}
+
+@media (width <= 576px) {
+  .article {
+    padding-top: 60px;
+    padding-bottom:60px;
+  }
+
+
+  .article__subtitle_size_large {
+    font-size: 28px;
+  }
+
+  .article__container-mb {
+    margin-bottom: 40px;
+  }
+
+  .article__container {
+    margin-bottom: 30px;
+  }
+
+  .article__play-button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .article__play-button img {
+    width: 18px;
+    height: 18px;
+  }
+}

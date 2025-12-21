@@ -1,0 +1,366 @@
+.hero {
+  padding-top: 80px;
+  position: relative;
+}
+
+.hero::before {
+  width: 100%;
+  bottom: 106px;
+}
+
+.hero__container {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+}
+
+.hero__inner {
+  max-width: 492px;
+}
+
+.hero__title {
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+  font-size: 62px;
+  line-height: 115%;
+  text-transform: uppercase;
+  color: #2c332f;
+  margin-bottom: 40px;
+}
+
+.hero__title .hero__title-accent {
+  color: #3596ed;
+  font-weight: 600;
+}
+
+.hero__text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 130%;
+  color: #535755;
+  margin-bottom: 140px;
+  max-width: 440px;
+}
+
+.hero__images {
+  display: flex;
+  position: relative;
+}
+
+.hero__img-hero {
+  width: 100%;
+  display: flex;
+}
+
+.hero__images-text {
+  text-align: center;
+  position: absolute;
+  transform: translate(165%, 50%);
+  width: 160px;
+  height: 86px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 130%;
+  text-align: center;
+  color: #2c332f;
+  border: 1px solid #535755;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* ============================================================ */
+
+.news {
+  /* display: none; */
+}
+
+.news__card {
+  display: flex;
+  gap: 28px;
+}
+
+.news__article {
+  display: flex;
+  flex-direction: column;
+  max-width: 284px;
+  background-color: #fff;
+  border: 1px solid #d3cbd9;
+  overflow: hidden;
+}
+
+.news__article-img {
+  display: block;
+}
+
+.news__info {
+  padding: 20px 20px 0;
+  margin-bottom: 12px;
+}
+
+.news__info-date {
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.news__article footer {
+  padding: 0 20px 20px;
+  margin-top: auto;
+}
+
+.news-text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 130%;
+  color: #2c332f;
+}
+
+.news__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 130%;
+  color: #3596ed;
+}
+
+.news__link::after {
+  content: "";
+  width: 22px;
+  height: 9px;
+  background-image: url("../gallery/arrow-right-icon.svg");
+  transition: transform 0.2s;
+}
+
+.news__link:hover::after {
+  transform: translateX(5px);
+}
+
+.faq {
+  position: relative;
+}
+
+.faq::before {
+  /* width: -528px; */
+  top: 215px;
+  /* height: 48px; */
+}
+
+.faq__container {
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+}
+
+.faq__accordion {
+  width: 100%;
+}
+
+.faq__accordion-details {
+  list-style: none;
+  margin-bottom: 20px;
+  border-block: 1px solid #d3cbd9; /*задает border сверху и с низу*/
+}
+
+details[open] summary::after {
+  /*Переворачиваем стрелку*/
+  transform: rotate(180deg);
+}
+
+summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 20px;
+  list-style: none; /*Обнуляем стили*/
+  cursor: pointer;
+  user-select: none; /*Текст копировать нельзя*/
+}
+
+.faq__summary {
+  font-family: "Oswald", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 115%;
+  text-transform: uppercase;
+  color: #2c332f;
+}
+
+summary::-webkit-details-marker {
+  /*Обнуляем стили*/
+  display: none;
+}
+
+.faq__summary::after {
+  /*Добавляем стрелку*/
+  content: "";
+  display: flex;
+  width: 17px;
+  height: 22px;
+  background: url(../gallery/arrow-down-icon.svg) no-repeat center / cover;
+  transition: transform 0.3s;
+}
+
+.faq__text {
+  padding: 0 20px 20px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 130%;
+  color: #535755;
+}
+
+/* ==========================Адаптация========================== */
+@media (width <= 1440px) {
+  .hero__images-text {
+    transform: translate(138%, 50%);
+  }
+}
+
+@media (width <= 1250px) {
+  .hero__images {
+    width: 40%;
+  }
+
+  .hero__img-hero {
+    justify-content: center;
+  }
+
+  .hero__images-text {
+    transform: translate(135%, 50%);
+    text-align: center;
+
+    width: 128px;
+    height: 67px;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 128%;
+    text-align: center;
+    color: #2c332f;
+    border: 1px solid #535755;
+    padding: 9px;
+  }
+}
+
+@media (width <= 1250px) {
+  .hero__container {
+    height: auto; /* Убираем фиксированную высоту */
+    min-height: auto; /* Добавляем для гибкости */
+    flex-direction: column;
+    justify-content: start;
+  }
+
+  .hero {
+    padding-top: 28px;
+    margin-bottom: 40px;
+  }
+
+  .hero__inner {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero__title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 50px;
+    margin-bottom: 20px;
+  }
+
+  .hero__text {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .hero__images {
+    position: static;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Делаем hero__images колонкой */
+  .hero__images {
+    width: 40%;
+    position: static;
+    flex-direction: column;
+
+    width: 100%;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+
+  /* Исправляем hero__images-text */
+  .hero__images-text {
+    position: static;
+    transform: none;
+    order: -1; /* Ставим текст первым в колонке */
+    margin-bottom: 20px;
+    width: 160px;
+    height: auto;
+    padding: 15px;
+  }
+
+  .news {
+    margin-bottom: 40px;
+  }
+
+  .news__card {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .news__title {
+    max-width: 100%;
+    display: block;
+    text-align: center;
+  }
+}
+
+@media (width <= 992px) {
+  .faq__container-img {
+    width: 70%;
+  }
+
+  .faq__title {
+    max-width: 100%;
+    display: block;
+    text-align: center;
+  }
+
+  .hero__img-img {
+    width: 100%;
+  }
+
+  .faq__container {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero__title {
+    text-align: center;
+  }
+
+  .news__card {
+    gap: 14px;
+  }
+
+  .faq-img {
+    width: 100%;
+  }
+
+  .faq {
+    margin-bottom: 20px;
+  }
+
+  .faq::before {
+    display: none;
+  }
+}
