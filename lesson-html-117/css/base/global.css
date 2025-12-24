@@ -9,7 +9,7 @@ html {
 .page__body {
   /* Стиль Для адаптива, сжатия */
   min-width: 357px;
-  min-height: 200vh;
+  /* min-height: 200vh; */
   /* Цвет фона */
   background-color: var(--bg-color);
 }
@@ -37,3 +37,4 @@ button:focus-visible {
   outline: 1px solid var(--accent-color);
   outline-offset: 2px;
 }
+
