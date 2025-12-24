@@ -1,0 +1,39 @@
+html {
+  /* Стили для страницы */
+  font-family: var(--font-family);
+  font-weight: 400;
+  color: var(--main-color);
+  box-sizing: border-box;
+}
+
+.page__body {
+  /* Стиль Для адаптива, сжатия */
+  min-width: 357px;
+  min-height: 200vh;
+  /* Цвет фона */
+  background-color: var(--bg-color);
+}
+
+.page__body--no-scroll {
+  overflow: hidden;
+}
+
+.container {
+  /* Размер для контейнера */
+  /* max-width: var(--container-width); */
+  width: 100%;
+  max-width: var(--container-width);
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+  /* Центрируем */
+  margin: 0 auto;
+  /* важно! */
+  box-sizing: border-box; 
+}
+
+/* Выделение при Tab */
+a:focus-visible, 
+button:focus-visible {
+  outline: 1px solid var(--accent-color);
+  outline-offset: 2px;
+}
