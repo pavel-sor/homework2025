@@ -1,0 +1,27 @@
+/* Подключение переменных */
+:root {
+  /* font-family */
+  --font-family: "Montserrat", sans-serif;
+
+  /* colors */
+  --main-color: #fff;
+  --accent-color: #ffea00;
+  --bg-color: #2a2a29;
+  --secondary-color: #c9c69b;
+  --disable-color: #5D5D56;
+  --shadow-color: #181817;
+
+   /* container  */
+  --container-width: 1240px;
+  --container-padding: 15px; 
+
+ /* transitions */
+   --transitio-time: 0.4s;
+
+/* layer слои*/
+  --layer-negative: -1;
+--layer-1: 1;
+--layer-2: 2;
+--layer-3: 3;
+
+}

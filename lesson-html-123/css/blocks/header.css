@@ -1,0 +1,195 @@
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: var(--layer-1); /*шапка на первом месте*/
+  /* Сокращенная запись pading */
+  /* padding-top: 30px; */
+  /* padding-bottom: 24px; */
+  /* Задает отступы с верху и с низу */
+  padding-block: 32px;
+  transition: box-shadov var(--transitio-time);
+  background-color: var(--bg-color);
+
+}
+
+.header--fixed {
+  box-shadow: 0 0 20px 0 var(--shadow-color);
+
+}
+
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* .header__logo { */
+/* При сужении экрана добавим clam  
+  (минимальное значение, единица wv по отношению к размеру экрана максимальное значение
+  Есть сайт https://min-max-calculator.9elements.com/
+  это калькулятор подбора*/
+/* margin-right: 120px; */
+/* margin-right: clamp(30px, 4vw, 120px); */
+/* min-width 992px, max-width 1440px */
+/* margin-right: clamp(25px, -11.585rem + 21.21vw, 120px); */
+/* } */
+
+/* .header__menu { */
+/* Ростяним меню на все пространство */
+/* flex-grow: 1; */
+/* } */
+
+/* Добавим @media для flex-grow: 1; */
+@media (width > 768px) {
+  .header__logo {
+    /*min-width 992px, max-width 1448px*/
+    margin-right: clamp(25px, -11.585rem + 21.21vw, 120px);
+  }
+
+  .header__menu {
+    /* Ростяним меню на все пространство */
+    flex-grow: 1;
+  }
+}
+
+/* Скрываем меню display: none;
+Далее адаптив меню display: none; отменяем
+Установим position: fixed;, .header__menu .menu__list
+Расположим в колонку, укажем расположение*/
+@media (width <= 768px) {
+  .header__menu {
+    position: fixed;
+    top: 0;
+    right: -100vw;
+    bottom: 0;
+    min-width: 297px;
+    z-index: var(--layer-2);
+    padding-top: 144px;
+    padding-right: 15px;
+    background-color: var(--bg-color);
+    box-shadow: 0 0 20px 0 var(--shadow-color);
+    opacity: 0;
+    visibility: hidden;
+    transition: right var(--transitio-time), opasity var(--transitio-time),
+      visibility var(--transitio-time);
+    /* display: none; */
+  }
+
+  .header__menu--open {
+    right: 0;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .header__menu .menu__list {
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: end;
+  }
+}
+
+.header__controls {
+  display: flex;
+  align-items: center;
+  /* gap: 60px; прописали @media меньше и больше ниже*/
+}
+
+/* При больше gap */
+@media (width > 992px) {
+  .header__controls {
+    gap: 60px;
+  }
+}
+/* При меньше gap */
+@media (width <= 992px) {
+  .header__controls {
+    gap: 30px;
+  }
+}
+
+.header__order {
+  position: relative;
+  padding-bottom: 5px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 130%;
+  color: var(--accent-color);
+  border-bottom: 1px solid var(--accent-color);
+
+}
+
+@media (any-hover: hover) {
+  .header__order:hover::before {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.header__order::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 90%;
+  min-height: 11px;
+  transform: translate(-50%, -50%);
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  filter: blur(30px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transitio-time), visibility var(--transitio-time);
+}
+
+/* Скрываем .header__order при открытом меню на мобильных */
+@media (width <= 768px) {
+  .header__menu--open ~ .header__controls .header__order {
+    display: none;
+  }
+}
+
+.header__actions {
+  display: flex;
+  /* gap: 20px; */
+}
+
+@media (width > 768px) {
+  .header__actions {
+    gap: 20px;
+  }
+}
+
+@media (width <= 768px) {
+  .header__actions {
+    gap: 30px;
+  }
+}
+
+.header__actions-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: var(--main-color);
+  transition: var(--transitio-time);
+}
+
+/* currentColor ссылается на свойство color родителя */
+.header__actions-icon {
+  stroke: currentColor;
+}
+
+/* На тач устройстве, где нет мышки hover эфекта не будет */
+@media (any-hover: hover) {
+  .header__actions-button:hover {
+    color: var(--accent-color);
+  }
+
+  .header__actions-button:active {
+    color: var(--accent-color);
+  }
+}
