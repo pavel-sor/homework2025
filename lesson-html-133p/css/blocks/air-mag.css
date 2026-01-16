@@ -1,0 +1,141 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
+@media (width > 576px) {
+  .air-mag__title {
+    margin-bottom: 10px;
+  }
+}
+
+@media (width > 576px) {
+  .air-mag {
+    padding-bottom: 93px;
+  }
+}
+
+.air-mag__title {
+  margin-bottom: 10px;
+}
+
+@media (width <= 576px) {
+  .air-mag {
+    padding-bottom: 80px;
+  }
+}
+
+@media (width <= 576px) {
+  .air-mag__title {
+    /*min-width 375px, max-width 992px*/
+    font-size: clamp(32px, 0.936rem + 4.54vw, 60px);
+    margin-bottom: 20px;
+  }
+
+  .air-mag__title {
+  margin-bottom: 13px;
+}
+}
+
+.air-mag__description {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 13px;
+}
+
+.air-mag__description::before {
+  content: "";
+  display: block;
+  width: 131px;
+  height: 40px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0; /*Элемент не обрезаеца*/
+  background-image: url(../../icons/rectangle-decor-icon.svg);
+  -webkit-transform: translate(-13px);
+      -ms-transform: translate(-13px);
+          transform: translate(-13px); /*Сдвигаем элемент в лево*/
+}
+@media (width > 768px) {
+  .air-mag__description {
+    margin-bottom: 20px;
+  }
+}
+@media (width <= 768px) {
+  .air-mag__description {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-bottom: 15px;
+  }
+}
+
+.air-mag__info-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media (width > 992px) {
+  .air-mag__info-wrapper {
+    gap: 40px;
+  }
+}
+@media (width <= 992px) {
+  .air-mag__info-wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 0px;
+  }
+}
+
+.air-mag__img {
+  width: 100%;
+}
+
+.air-mag__info-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  list-style: none;
+}
+
+@media (width > 992px) {
+  .air-mag__info-list {
+    -webkit-transform: translateY(77px);
+        -ms-transform: translateY(77px);
+            transform: translateY(77px);
+    /*определяет фактор сжатия flex-элемента*/
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    gap: 40px;
+    max-width: 293px;
+  }
+}
+@media (width <= 992px) {
+  .air-mag__info-list {
+    max-width: 600px;
+    gap: 20px;
+  }
+}
+
+.air-mag__info-item::before {
+  content: "";
+  display: block;
+  width: 46px;
+  height: 33px;
+  margin-bottom: 5px;
+  background-image: url(../../icons/double-checkbox-icon.svg);
+  -webkit-transform: translateX(-8px);
+      -ms-transform: translateX(-8px);
+          transform: translateX(-8px);
+}

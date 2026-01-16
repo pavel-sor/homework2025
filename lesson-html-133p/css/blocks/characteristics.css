@@ -1,0 +1,149 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
+.characteristics__video {
+  position: relative;
+}
+
+@media (width > 576px) {
+  .characteristics__video {
+    margin-bottom: 60px;
+  }
+}
+
+@media (width <= 576px) {
+  .characteristics__video {
+    margin-bottom: 40px;
+  }
+}
+
+.characteristics-video-previe {
+  border: 1px solid var(--main-color);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.characteristics__video-play-link {
+  /*Центрируе*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  /*Выравниваем*/
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /*Задаем параметры*/
+  border: 1px solid var(--main-color);
+  border-radius: 50%;
+  background-color: #2a2a2980;
+  /*Добавим тень*/
+  -webkit-box-shadow: var(--shadows-glow), inset var(--shadows-glow);
+          box-shadow: var(--shadows-glow), inset var(--shadows-glow);
+  -webkit-transition: border-color var(--transitio-time),
+    -webkit-box-shadow var(--transitio-time);
+  transition: border-color var(--transitio-time),
+    -webkit-box-shadow var(--transitio-time);
+  -o-transition: border-color var(--transitio-time),
+    box-shadow var(--transitio-time);
+  transition: border-color var(--transitio-time),
+    box-shadow var(--transitio-time);
+  transition: border-color var(--transitio-time),
+    box-shadow var(--transitio-time),
+    -webkit-box-shadow var(--transitio-time);
+}
+
+@media (any-hover: hover) {
+  /*При наведении меняем цвет*/
+  .characteristics__video-play-link:hover {
+    border-color: var(--accent-color);
+    -webkit-box-shadow: var(--shadows-accent-glow), inset var(--shadows-accent-glow);
+            box-shadow: var(--shadows-accent-glow), inset var(--shadows-accent-glow);
+  }
+}
+
+@media (width > 576px) {
+  .characteristics__video-play-link {
+    width: 80px;
+    height: 80px;
+  }
+  .characteristics__video-play-icon {
+    width: 17px;
+    height: 23px;
+    /*Сместим иконку в право*/
+    -webkit-transform: translateX(2px);
+        -ms-transform: translateX(2px);
+            transform: translateX(2px);
+  }
+}
+@media (width <= 576px) {
+  .characteristics__video-play-link {
+    width: 48px;
+    height: 48px;
+  }
+  .characteristics__video-play-icon {
+    width: 10px;
+    height: 12px;
+    /*Сместим иконку в право*/
+    -webkit-transform: translateX(1px);
+        -ms-transform: translateX(1px);
+            transform: translateX(1px);
+  }
+}
+
+.characteristics__list {
+  /*Зададим грид*/
+  display: -ms-grid;
+  display: grid;
+  /*Зададим размер карточки*/
+  grid-template-columns: repeat(auto-fit, minmax(345px, 1fr));
+  /*Зададим отступ для строк и колонок*/
+  gap: 40px 20px;
+}
+
+.characteristics__card-icon {
+  margin-bottom: 4px;
+  /*Сдвигаем иконку в лево до края*/
+  -webkit-transform: translateX(-8px);
+      -ms-transform: translateX(-8px);
+          transform: translateX(-8px);
+}
+
+/* @media (width > 576px) {
+  .characteristics__card-icon {
+    width: 56px;
+    height: 56px;
+
+  }
+} */
+@media (width <= 576px) {
+  .characteristics__card-icon {
+    width: 48px;
+    height: 48px;
+
+  }
+}
+
+.characteristics__card-title {
+  margin-bottom: 20px;
+}
+
+.characteristics__card-description {
+  /*Зададим стили для текста*/
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 140%;
+  color: var(--main-color);
+}

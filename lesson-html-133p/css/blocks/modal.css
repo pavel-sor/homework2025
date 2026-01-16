@@ -1,0 +1,89 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
+.modal {
+/*Переопределим переменную*/
+--transition-time: 0.2s;
+
+
+  /*Создаем фон, подложка*/
+  position: fixed;
+  /*Растяним*/
+  inset: 0;
+  /*На первый план*/
+  z-index: var(--layer-3);
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: var(--overlay);
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+
+  -webkit-transition: opacity var(--transitio-time), visibility var(--transitio-time);
+
+  -o-transition: opacity var(--transitio-time), visibility var(--transitio-time);
+
+  transition: opacity var(--transitio-time), visibility var(--transitio-time);
+}
+
+.modal--open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/*Псевдоэлемент который будет сдвигать модалку, в незавиимости от размеров*/
+.modal::before {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  /*Позиционирует по вертикали относительно родителя*/
+  vertical-align: middle;
+}
+
+/*Помогает отцентрировать окно и элементы*/ 
+.modal__windows {
+  position: relative;
+  /*Если несколько модальных окон, пропишем display: none*/
+  /* display: inline-block; */
+  display: none;
+  vertical-align: middle;
+  margin-block: 50px;
+  border-radius: 12px;
+  background-color: var(--bg-color);
+  -webkit-box-shadow: 0 0 20px var(--shadow-color);
+          box-shadow: 0 0 20px var(--shadow-color);
+}
+
+/*Если несколько модальных окон*/
+.modal__window--open {
+  display: inline-block;
+}
+
+
+
+@media (width > 576px) {
+  .modal__windows {
+    padding: 100px 50px;
+  }
+}
+@media (width <= 576px) {
+  .modal__windows {
+    padding: 80px 30px;
+    width: 90%;
+  }
+}
+
+
+.modal__close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  width: 24px;
+  height: 24px;
+}
