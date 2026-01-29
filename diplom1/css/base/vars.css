@@ -1,0 +1,38 @@
+/* Подключение переменных */
+:root {
+  /* font-family */
+  --font-family: "Inter", sans-serif;
+  --second-family: "Readex Pro", sans-serif;
+
+  /* colors */
+  --main-color: #000;
+  /* --main-glow-color: #ffffff2d; */
+  --accent-color: #757575;
+  /* --accent-glow-color: #ffea004d; */
+  --bg-color: #fff;
+  --hover-color: #dce5e2;
+  --secondary-color: #00000008;
+  /* --disable-color: #5d5d56; */
+  /* --disable-glow-color: #5d5d562d; */
+  --shadow-color: #c5c5c5;
+  /* --overlay: linear-gradient(#1e1e1ee6, #000000 1810%); */
+
+  /*shadows*/
+  /* --shadows-glow: 0 0 7px 2px var(--main-glow-color); */
+  /* --shadows-accent-glow: 0 0 7px 2px var(--accent-glow-color); */
+  /* --shadows-disabled-glow: 0 0 7px 2px var(--disable-glow-color); */
+
+  /* container  */
+  --container-width: 1294px;
+  --container-padding: 15px;
+
+  /* transitions */
+  --transitio-time: 0.4s;
+
+  /* layer слои*/
+  --layer-negative: -1;
+  --layer-1: 1;
+  --layer-2: 100;
+  --layer-3: 1000;
+  --layer-4: 10000;
+}

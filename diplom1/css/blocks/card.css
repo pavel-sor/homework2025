@@ -1,0 +1,428 @@
+.main__card {
+  margin-bottom: 75px;
+}
+.card__content {
+  text-align: center;
+  align-items: center;
+}
+.card__title {
+  padding-bottom: 9px;
+}
+.card__text {
+  max-width: 628px;
+  margin: 0 auto 55px;
+}
+
+.card__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, auto);
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+  height: auto;
+  flex-grow: 1;
+}
+
+.card__inner-title {
+  margin-bottom: 10px;
+}
+
+.card__grid-laptops {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: end;
+  grid-area: 1 / 1 / 3 / 3;
+  box-shadow: 1px 1px 20px var(--shadow-color);
+  max-height: 510px;
+  overflow: hidden;
+  transition: var(--transitio-time);
+}
+.card__grid-laptops:hover {
+  transform: scale(1.1) translateX(-15px) translateY(-8px);
+}
+
+.card__laptops-inner {
+  max-width: 192px;
+  text-align: end;
+  margin-right: 42px;
+  margin-bottom: 10px;
+}
+
+.card__laptops-img {
+  overflow: hidden;
+  margin: -50px 15% 20px 42px;
+  max-width: 500px;
+  max-height: 427px;
+}
+.card__laptops-img img {
+  max-width: 500px;
+  max-height: 487px;
+  width: 100%;
+}
+
+.card__grid-phones {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  grid-area: 1 / 3 / 4 / 4;
+  box-shadow: 1px 1px 20px var(--shadow-color);
+  overflow: hidden;
+  transition: var(--transitio-time);
+}
+.card__grid-phones:hover {
+  transform: scale(1.1);
+}
+
+.card__phones-inner {
+  text-align: center;
+  left: 9px;
+  bottom: 144px;
+  max-width: 250px;
+}
+.card__phones-img {
+  max-width: 290px;
+  margin-bottom: 60px;
+  margin-left: 20px;
+}
+.card__phones-img img {
+  max-width: 405px;
+  width: 150%;
+}
+
+.card__grid-tablet {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  grid-area: 1 / 4 / 4 / 5;
+  box-shadow: 1px 1px 20px var(--shadow-color);
+  overflow: hidden;
+  transition: var(--transitio-time);
+}
+.card__grid-tablet:hover {
+  transform: scale(1.1);
+}
+.card__tablet-inner {
+  max-width: 250px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.card__tablet-img {
+  top: 292px;
+  margin-left: -75px;
+}
+.card__tablet-img img {
+  max-width: 467px;
+  width: 150%;
+}
+
+.card__grid-watch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  grid-area: 3 / 1 / 4 / 3;
+  box-shadow: 1px 1px 20px var(--shadow-color);
+  overflow: hidden;
+  transition: var(--transitio-time);
+}
+
+.card__grid-watch:hover {
+  transform: scale(1.1) translateX(-15px) translateY(-2px);
+}
+.card__watch-inner {
+  min-width: 128px;
+  text-align: end;
+  margin-right: 42px;
+}
+.card__watch-img {
+  margin-left: 1.5em;
+}
+
+.card__watch-img img {
+  max-width: 90%;
+  width: 100%;
+}
+
+/* ========== АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ ========== */
+
+/* Планшеты (до 992px) */
+@media (width <= 992px) {
+  .main__card {
+    margin-bottom: 60px;
+  }
+
+  .card__text {
+    margin: 0 auto 40px;
+    padding: 0 20px;
+  }
+
+  .card__grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, auto);
+    grid-row-gap: 20px;
+    height: auto;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .card__grid-laptops {
+    grid-area: 1 / 1 / 3 / 2;
+    max-height: 400px;
+  }
+
+  .card__laptops-img {
+    margin: -30px 10% 15px 30px;
+    max-width: 350px;
+    max-height: 300px;
+  }
+
+  .card__laptops-inner {
+    margin-right: 30px;
+    margin-bottom: 20px;
+  }
+
+  .card__grid-phones {
+    grid-area: 1 / 2 / 3 / 3;
+  }
+
+  .card__phones-img {
+    max-width: 200px;
+    margin-bottom: 40px;
+  }
+
+  .card__phones-img img {
+    width: 120%;
+  }
+
+  .card__grid-tablet {
+    grid-area: 3 / 1 / 5 / 2;
+  }
+
+  .card__tablet-img {
+    margin-left: -50px;
+  }
+
+  .card__tablet-img img {
+    width: 130%;
+  }
+
+  .card__grid-watch {
+    grid-area: 3 / 2 / 5 / 3;
+  }
+
+  .card__inner-text {
+    font-size: 24px;
+    line-height: 30px;
+  }
+}
+
+/* Большие мобильные (до 768px) */
+@media (width <= 768px) {
+  .main__card {
+    margin-bottom: 50px;
+  }
+
+  .card__title {
+    font-size: 28px;
+    padding-bottom: 15px;
+  }
+
+  .card__text {
+    font-size: 16px;
+    margin-bottom: 30px;
+    padding: 0 15px;
+  }
+
+  .card__grid {
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+  }
+
+  .card__inner-title {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  .card__inner-text {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .card__laptops-img {
+    margin: -20px 5% 10px 20px;
+    max-width: 280px;
+  }
+
+  .card__laptops-inner {
+    margin-right: 20px;
+    margin-bottom: 15px;
+  }
+
+  .card__phones-img {
+    max-width: 160px;
+    margin-bottom: 30px;
+  }
+
+  .card__tablet-inner {
+    margin-bottom: 20px;
+  }
+
+  .card__tablet-img {
+    margin-left: -40px;
+  }
+
+  .card__watch-inner {
+    margin-right: 20px;
+  }
+}
+
+/* Средние мобильные (до 576px) */
+@media (width <= 576px) {
+  .main__card {
+    margin-bottom: 40px;
+  }
+
+  .card__grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, auto);
+    grid-row-gap: 20px;
+    max-width: 400px;
+  }
+
+  .card__grid-laptops {
+    grid-area: 1 / 1 / 2 / 2;
+    max-height: 350px;
+  }
+
+  .card__grid-phones {
+    grid-area: 2 / 1 / 3 / 2;
+    min-height: 350px;
+  }
+
+  .card__grid-tablet {
+    grid-area: 3 / 1 / 4 / 2;
+    min-height: 350px;
+  }
+
+  .card__grid-watch {
+    grid-area: 4 / 1 / 5 / 2;
+    min-height: 200px;
+  }
+
+  .card__laptops-img {
+    margin: -15px 5% 10px 15px;
+    max-width: 250px;
+  }
+
+  .card__laptops-inner {
+    max-width: 150px;
+    margin-right: 15px;
+  }
+
+  .card__phones-img {
+    max-width: 180px;
+    margin-bottom: 20px;
+  }
+
+  .card__phones-inner {
+    max-width: 200px;
+  }
+
+  .card__tablet-inner {
+    max-width: 200px;
+  }
+
+  .card__tablet-img {
+    margin-left: -30px;
+  }
+
+  .card__watch-inner {
+    min-width: 100px;
+    margin-right: 15px;
+  }
+
+  .card__watch-img {
+    margin-left: 1em;
+  }
+}
+
+/* Маленькие мобильные (до 480px) */
+@media (width <= 480px) {
+  .card__title {
+    font-size: 24px;
+    padding-bottom: 10px;
+  }
+
+  .card__text {
+    font-size: 14px;
+    margin-bottom: 25px;
+    padding: 0 10px;
+  }
+
+  .card__grid {
+    grid-row-gap: 15px;
+  }
+
+  .card__inner-text {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .card__laptops-img {
+    max-width: 220px;
+  }
+
+  .card__phones-img {
+    max-width: 150px;
+  }
+
+  .card__phones-img img {
+    width: 110%;
+  }
+
+  .card__tablet-img img {
+    width: 120%;
+  }
+
+  .card__grid-laptops:hover,
+  .card__grid-phones:hover,
+  .card__grid-tablet:hover,
+  .card__grid-watch:hover {
+    transform: scale(1.03);
+  }
+}
+
+/* Очень маленькие экраны (до 360px) */
+@media (width <= 360px) {
+  .card__grid {
+    max-width: 300px;
+  }
+
+  .card__inner-text {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .card__laptops-img {
+    max-width: 180px;
+  }
+
+  .card__phones-img {
+    max-width: 120px;
+  }
+
+  .card__tablet-img {
+    margin-left: -20px;
+  }
+
+  .card__tablet-img img {
+    width: 110%;
+  }
+}
