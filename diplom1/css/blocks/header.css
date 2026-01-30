@@ -1,0 +1,233 @@
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: var(--layer-2); /*шапка на первом месте*/
+  /* Сокращенная запись pading */
+  /* padding-top: 30px; */
+  /* padding-bottom: 24px; */
+  /* Задает отступы с верху и с низу */
+  padding-block: 32px;
+  /*Плавное появление тени*/
+  transition: box-shadov var(--transitio-time);
+  background-color: var(--bg-color);
+}
+
+.header--fixed {
+  box-shadow: 0 0 20px 0 var(--shadow-color);
+  /*Тень будет обрезатся по шапке*/
+  /* overflow-y: hidden; */
+  /* clip-path: none; */
+}
+
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/*==menu==*/
+.menu {
+  display: block;
+}
+
+.menu__list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4vh 40px;
+}
+
+@media (width <= 768px) {
+  .menu__list {
+    display: none;
+  }
+}
+@media (width > 768px) {
+  .menu__list {
+    gap: 30px;
+  }
+}
+
+.menu__item {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 120%;
+  text-transform: uppercase;
+  position: relative; /* Добавим для выпадающего меню */
+  display: flex; /* Чтобы стрелка была рядом с текстом */
+  align-items: center;
+}
+
+.menu__link {
+  display: block;
+  /* Увеличили область нажатия */
+  padding: 5px 0;
+  position: relative;
+  /*Цвет ссылки*/
+  color: var(--main-color);
+}
+
+.menu__link-arrow {
+  width: 12px;
+  height: 8px;
+  color: var(--main-color);
+  visibility: hidden; /* Скрываем по умолчанию */
+  opacity: 0; /* Для плавного появления */
+  transition: var(--transitio-time);
+  margin-left: 5px; /* Отступ от текста */
+}
+
+.menu__link-arrow-icon {
+  stroke: currentColor;
+}
+
+@media (any-hover: hover) {
+  .menu__item:hover .menu__link-arrow {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .menu__link:hover {
+    color: var(--accent-color); /* Меняем цвет текста при наведении */
+  }
+
+  .menu__item:hover .menu__link {
+    color: var(--accent-color); /* Или так */
+  }
+}
+
+/*=== Выпадающее меню ===*/
+.menu__item--dropdown {
+  position: relative;
+}
+
+.menu__link {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 0;
+  color: var(--main-color);
+  transition: color var(--transitio-time);
+  gap: 5px;
+}
+
+.menu__link-arrow {
+  width: 12px;
+  height: 8px;
+  color: inherit;
+  opacity: 0;
+  transform: translateY(-2px);
+  transition:
+    opacity var(--transitio-time),
+    transform var(--transitio-time);
+}
+
+.menu__link-arrow-icon {
+  stroke: currentColor;
+}
+
+/* Выпадающее меню - скрыто по умолчанию */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  background-color: var(--bg-color);
+  box-shadow: 0 10px 30px var(--hover-color);
+  border-radius: 8px;
+  padding: 15px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: var(--layer-4);
+  border: 1px solid var(--shadow-color);
+}
+
+/* Стили для списка выпадающего меню */
+.dropdown-menu__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-menu__item {
+  padding: 5px;
+  
+}
+
+.dropdown-menu__link {
+  display: block;
+  padding: 10px 20px;
+  color: var(--main-color);
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  text-transform: none;
+  transition: var(--transitio-time);
+  background-color: transparent;
+  border-radius: 8px;
+}
+
+/* Состояния при наведении */
+@media (any-hover: hover) {
+  .menu__item--dropdown:hover .menu__link {
+    color: var(--accent-color);
+  }
+
+  .menu__item--dropdown:hover .menu__link-arrow {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .menu__item--dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .dropdown-menu__link:hover {
+    background-color: var(--hover-color);
+    color: var(--accent-color);
+    padding-left: 25px;
+  }
+}
+
+/*==controls==*/
+.header__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  
+}
+
+.header__actions-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: var(--main-color);
+  transition: var(--transitio-time);
+}
+
+.header__actions-icon {
+  stroke: currentColor;
+}
+
+/* На тач устройстве, где нет мышки hover эфекта не будет */
+@media (any-hover: hover) {
+  .header__actions-button:hover {
+    color: var(--accent-color);
+  }
+
+  .header__actions-button:active {
+    color: var(--accent-color);
+  }
+}
+
+.header__burger {
+  display: none;
+}

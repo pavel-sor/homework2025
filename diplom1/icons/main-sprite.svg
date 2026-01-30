@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="double-arrow" viewBox="0 0 14 26" fill="none">
+    <path d="M13 25L1 13L13 1" stroke-linecap="round" stroke-linejoin="round" />
+  </symbol>
+</svg>
+
+
+
+
+
+<!-- Создаем svg пропишим из копии xmlns="http://www.w3.org/2000/svg"
+в копии svg поменяем на symbol -->
+<!-- stroke="white" Уберем, так как сами будем красить -->
