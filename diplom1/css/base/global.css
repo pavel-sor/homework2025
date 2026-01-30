@@ -1,0 +1,131 @@
+.page {
+  /* Стили для страницы */
+  font-family: var(--font-family);
+  font-weight: 400;
+  /* color: var(--main-color); */
+  box-sizing: border-box;
+  scroll-behavior: smooth; /*Плавная прокрутка*/
+  scroll-padding-top: 98px; /*Добавляет отступ с верзу, чтобы шапка не перекрывала*/
+  scrollbar-gutter: stable; /*управляет отступом для полосы прокрутки (скроллбара), 
+  предотвращая нежелательные смещения контента при появлении или исчезновении скроллбара.*/
+}
+
+.page__body {
+  /* Стиль Для адаптива, сжатия */
+  min-width: 357px;
+  min-height: 200vh;
+  /* Цвет фона */
+  background-color: var(--bg-color);
+}
+
+.page__body--no-scroll {
+  overflow: hidden;
+}
+
+.container {
+
+  /* Размер для контейнера */
+  /* max-width: var(--container-width); */
+  width: min(var(--container-width), 100% - var(--container-padding) * 2);
+
+  /* Центрируем */
+  margin-inline: auto;
+  /* важно! */
+  box-sizing: border-box;
+}
+
+img {
+  object-fit: cover; /* заполнять контейнер относительно его высоты и ширины.*/
+}
+
+/* Выделение при Tab фокусировка */
+a:focus-visible,
+button:focus-visible,
+input:focus {
+  outline: 1px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+.text-smol {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 120%;
+  color: var(--main-color);
+}
+.text-light {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 120%;
+  color: var(--main-color);
+}
+.text-light-m {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  color: var(--main-color);
+}
+.text-regular {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 128%;
+  color: var(--main-color);
+}
+
+.title-xx,
+.title-xs,
+.title-xl,
+.title-l,
+.title-m {
+  font-family: var(--second-family);
+  font-weight: 400;
+  line-height: 120%;
+  color: var(--main-color);
+}
+
+.title-xx {
+  font-size: 58px;
+
+}
+
+.title-xs {
+  font-size: 42px;
+  line-height: 120%;
+  /*min-width 375px, max-width 992px*/
+  /* font-size: clamp(32px, 0.936rem + 4.54vw, 60px); */
+}
+
+.title-xl {
+  font-size: 32px;
+  line-height: 120%;
+  /*min-width 375px, max-width 768px*/
+  /* font-size: clamp(24px, 1.023rem + 2.04vw, 32px); */
+}
+.title-l {
+  font-size: 28px;
+  /*min-width 375px, max-width 768px*/
+  /* font-size: clamp(24px, 1.023rem + 2.04vw, 32px); */
+}
+.title-m {
+  font-size: 22px;
+  /*min-width 375px, max-width 768px*/
+  /* font-size: clamp(24px, 1.023rem + 2.04vw, 32px); */
+}
+
+@media (width > 576px) {
+  .section {
+    padding-bottom: 75px;
+  }
+  .section-title {
+    margin-bottom: 9px;
+  }
+}
+
+@media (width <= 576px) {
+  .section {
+    padding-bottom: 50px;
+  }
+}

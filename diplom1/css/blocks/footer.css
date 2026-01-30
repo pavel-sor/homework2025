@@ -1,0 +1,143 @@
+.footer {
+  background-color: var(--accent-glow-color);
+  padding: 60px 0 40px;
+  border-top: 1px solid var(--hover-color);
+  border-bottom: 1px solid var(--hover-color);
+  margin-bottom: 75px;
+}
+
+.footer__inner {
+  display: grid;
+  gap: 28px;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+}
+
+.footer__logo-text {
+  max-width: 304px;
+  margin-top: 18px;
+}
+
+.footer__col-title {
+  padding-bottom: 19px;
+}
+
+.footer__col-item {
+  padding-bottom: 15px;
+}
+
+/* Адаптивность для планшетов */
+@media (max-width: 1024px) {
+  .footer__inner {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px 24px;
+    
+    
+  }
+  
+  .footer__col:first-child {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .footer__logo-text {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 0 30px;
+    margin-bottom: 50px;
+  }
+  
+  .footer__inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  
+  .footer__col {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .footer__col:not(:first-child) {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 24px;
+  }
+  
+  .footer__logo-text {
+    max-width: 100%;
+    margin-top: 12px;
+  }
+  
+  .footer__col-title {
+    padding-bottom: 15px;
+    font-size: 1.1rem;
+  }
+  
+  .footer__col-item {
+    padding-bottom: 12px;
+  }
+
+  .footer__col-link {
+      font-size: 15px;
+}
+}
+
+
+
+/* Адаптивность для маленьких мобильных устройств */
+@media (max-width: 480px) {
+  .footer {
+    padding: 32px 0 24px;
+    margin-bottom: 40px;
+  }
+  
+  .footer__inner {
+    gap: 28px;
+  }
+  
+  .footer__col:not(:first-child) {
+    padding-top: 20px;
+  }
+  
+  .footer__col-title {
+    padding-bottom: 12px;
+    font-size: 1rem;
+  }
+  
+  .footer__col-item {
+    padding-bottom: 10px;
+    font-size: 0.95rem;
+  }
+  
+  .footer__logo-text {
+    font-size: 0.95rem;
+  }
+}
+
+/* Для очень маленьких экранов (например, iPhone SE) */
+@media (max-width: 360px) {
+  .footer {
+    padding: 24px 0 20px;
+    margin-bottom: 32px;
+  }
+  
+  .footer__inner {
+    gap: 24px;
+  }
+  
+  .footer__col-title {
+    padding-bottom: 10px;
+  }
+  
+  .footer__col-item {
+    padding-bottom: 8px;
+  }
+}
