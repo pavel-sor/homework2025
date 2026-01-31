@@ -67,7 +67,7 @@ body.overflow {
     justify-content: center;
     -webkit-box-align: center;
     -ms-flex-align: center;
-    align-items: center;
+
     padding: 150px 60px 80px 60px;
 }
 
@@ -289,4 +289,5 @@ li a {
     .sidebar__user {
         margin-left: 0;
     }
+
 }
