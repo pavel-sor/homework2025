@@ -4,6 +4,8 @@
 // 2. lastName – фамилия (строка)
 // 3. isStudent – является ли учеником курса (булево значение)
 
+//Решение:
+
 let firstName = "Павел"; // строка с именем
 let lastName = "Сорокин"; // строка с фамилией
 let isStudent = true; // булево значение
@@ -13,6 +15,8 @@ let isStudent = true; // булево значение
 // 2. Объявите переменную currentYear и присвойте ей значение текущего года (например, 2025).
 // 3. Используя age и currentYear вычислите год рождения студента, запишите результат в переменную birthYear.
 
+//Решение:
+
 let age = 43;
 let currentYear = 2026;
 let birthYear = currentYear - age;
@@ -20,6 +24,8 @@ let birthYear = currentYear - age;
 // Задача 3.
 // Выведите в консоли сообщение в таком формате:
 // Меня зовут [firstName] [lastName], мне [age] лет. Я ученик/ученица курса: [isStudent].
+
+//Решение:
 
 console.log(
   `Меня зовут ${firstName} ${lastName}, мне ${age} года. Я ученик${isStudent ? " курса" : " (но не курса)"}.`,
@@ -33,6 +39,8 @@ console.log(
 // let d = Boolean(0);
 // let e = Boolean(' ');
 // let result = a + b + c + d + e;
+
+//Решение:
 
 let a = "123"; // строка "123"
 let b = +"456"; // унарный плюс преобразует строку в число: 456
