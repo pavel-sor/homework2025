@@ -117,13 +117,20 @@ function renderTodos() {
     addTodoEventListeners(todoElement);
     todosContainer.appendChild(todoElement);
   });
-
+  
   console.log('Текущие задачи:', todos);
 }
 
 // Обработка создания новой задачи
 function handleCreateTodo(event) {
   event.preventDefault();
+  
+  // Проверяем наличие input
+  if (!input) {
+    console.error('Поле ввода .input не найдено в HTML');
+    alert('Ошибка: поле ввода не найдено');
+    return;
+  }
 
   const text = input.value.trim();
 
@@ -162,6 +169,9 @@ if (form) {
 // Инициализация
 console.log('Приложение запущено');
 initializeDemoTodo();
+
 if (input) {
   input.focus(); // Устанавливаем фокус на поле ввода
+} else {
+  console.error('Поле ввода .input не найдено при инициализации');
 }
