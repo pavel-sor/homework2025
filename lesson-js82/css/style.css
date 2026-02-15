@@ -123,7 +123,9 @@ body {
 }
 
 .todo.completed .todo-text {
+	color: red;
 	text-decoration: line-through;
+	text-decoration-color: red;
 }
 
 .todo-actions {
@@ -131,3 +133,4 @@ body {
 	gap: 0.25rem;
 	flex-shrink: 0;
 }
+
