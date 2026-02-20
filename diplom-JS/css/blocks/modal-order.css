@@ -1,0 +1,518 @@
+/* modal-order.css - стили для модальных окон заказа */
+
+/* Общие стили для модальных окон заказа */
+.modal-order__content,
+.modal-order-size__content {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.modal-order__title,
+.modal-order-size__title {
+  margin-bottom: 16px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 130%;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent-color);
+}
+
+.modal-order__subtitle,
+.modal-order-size__subtitle {
+  margin-bottom: 30px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--secondary-color);
+  text-align: center;
+}
+
+/* Стили для формы - как в cart-modal.css */
+.modal-order__form,
+.modal-order-size__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modal-order__form-group,
+.modal-order-size__form-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.modal-order__label,
+.modal-order-size__label {
+  display: block;
+  width: 100%;
+}
+
+.modal-order__label-text,
+.modal-order-size__label-text {
+  display: block;
+  text-align: left;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 130%;
+  color: var(--secondary-color);
+  margin-bottom: 5px;
+}
+
+.modal-order__input,
+.modal-order-size__input,
+.modal-order__select,
+.modal-order-size__select {
+  width: 100%;
+  padding: 15px 20px;
+  font-size: 16px;
+  color: var(--main-color);
+  background-color: transparent;
+  border: 1px solid var(--main-color);
+  border-radius: 4px;
+  outline: none;
+  transition: var(--transition-time);
+}
+
+.modal-order__input:focus,
+.modal-order-size__input:focus,
+.modal-order__select:focus,
+.modal-order-size__select:focus {
+  border-color: var(--accent-color);
+  box-shadow: var(--shadow-accent-glow);
+}
+
+.modal-order__input::placeholder,
+.modal-order-size__input::placeholder {
+  color: var(--secondary-color);
+  opacity: 0.7;
+}
+
+.modal-order__select,
+.modal-order-size__select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 16px;
+}
+
+.modal-order__select option,
+.modal-order-size__select option {
+  background-color: var(--bg-color);
+  color: var(--main-color);
+}
+
+/* Стили для размеров */
+.modal-order__sizes,
+.modal-order-size__sizes {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  margin-top: 5px;
+}
+
+@media (max-width: 576px) {
+  .modal-order__sizes,
+  .modal-order-size__sizes {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.modal-order__size-label,
+.modal-order-size__size-label {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+.modal-order__size-radio,
+.modal-order-size__size-radio {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.modal-order__size-text,
+.modal-order-size__size-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 8px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid var(--main-color);
+  border-radius: 4px;
+  transition: all var(--transition-time);
+  background-color: transparent;
+  color: var(--main-color);
+}
+
+.modal-order__size-radio:checked + .modal-order__size-text,
+.modal-order-size__size-radio:checked + .modal-order-size__size-text {
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+  border-color: var(--accent-color);
+  box-shadow: var(--shadow-accent-glow);
+}
+
+.modal-order__size-radio:focus + .modal-order__size-text,
+.modal-order-size__size-radio:focus + .modal-order-size__size-text {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+.modal-order__size-radio:hover:not(:checked) + .modal-order__size-text,
+.modal-order-size__size-radio:hover:not(:checked) + .modal-order-size__size-text {
+  border-color: var(--accent-color);
+  box-shadow: var(--shadow-accent-glow);
+}
+
+/* Стили для чекбокса */
+.modal-order__checkbox-label,
+.modal-order-size__checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+.modal-order__checkbox,
+.modal-order-size__checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--accent-color);
+}
+
+.modal-order__checkbox-text,
+.modal-order-size__checkbox-text {
+  font-size: 14px;
+  color: var(--secondary-color);
+  line-height: 1.4;
+}
+
+/* Стили для кнопки отправки - как в cart-modal.css */
+.modal-order__submit,
+.modal-order-size__submit {
+  margin-top: 10px;
+  padding: 18px 30px;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bg-color);
+  background: var(--accent-color);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.modal-order__submit:hover:not(:disabled),
+.modal-order-size__submit:hover:not(:disabled) {
+  box-shadow: var(--shadow-accent-glow);
+  transform: translateY(-2px);
+}
+
+.modal-order__submit:disabled,
+.modal-order-size__submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Стили для сообщения об отсутствии размеров */
+.modal-order-size__no-sizes {
+  padding: 20px;
+  text-align: center;
+  color: var(--secondary-color);
+  border: 1px dashed var(--border-color);
+  border-radius: 4px;
+  font-size: 14px;
+  grid-column: 1 / -1;
+}
+
+/* Стили для ошибок валидации */
+.modal-order__input.error,
+.modal-order-size__input.error,
+.modal-order__select.error,
+.modal-order-size__select.error {
+  border-color: #ff4444;
+  animation: shake 0.3s ease;
+}
+
+.modal-order__form-error,
+.modal-order-size__form-error {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  font-size: 12px;
+  color: #ff4444;
+  text-align: left;
+}
+
+/* Стили для состояния загрузки */
+.modal-order__submit--loading,
+.modal-order-size__submit--loading {
+  color: transparent !important;
+}
+
+.modal-order__submit--loading::after,
+.modal-order-size__submit--loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid white;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* Стили для успешной отправки */
+.modal-order__success,
+.modal-order-size__success {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.modal-order__success-icon,
+.modal-order-size__success-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+  color: #4caf50;
+  animation: scaleIn 0.5s ease;
+}
+
+.modal-order__success-title,
+.modal-order-size__success-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--accent-color);
+  margin-bottom: 15px;
+}
+
+.modal-order__success-text,
+.modal-order-size__success-text {
+  color: var(--secondary-color);
+  margin-bottom: 30px;
+}
+
+/* Анимации */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Стили для скролла в модальных окнах */
+.modal-order__content,
+.modal-order-size__content {
+  max-height: 80vh;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.modal-order__content::-webkit-scrollbar,
+.modal-order-size__content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-order__content::-webkit-scrollbar-track,
+.modal-order-size__content::-webkit-scrollbar-track {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+.modal-order__content::-webkit-scrollbar-thumb,
+.modal-order-size__content::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 3px;
+}
+
+/* Стили для успешной отправки */
+.modal-order-size__success {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.modal-order-size__success-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+  color: #4caf50;
+  animation: scaleIn 0.5s ease;
+}
+
+.modal-order-size__success-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--accent-color);
+  margin-bottom: 15px;
+}
+
+.modal-order-size__success-text {
+  color: var(--secondary-color);
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+/* Стили для ошибок */
+.modal-order-size__form-error {
+  color: #ff4444;
+  font-size: 12px;
+  margin-top: 5px;
+  text-align: left;
+}
+
+.modal-order-size__input.error,
+.modal-order-size__select.error {
+  border-color: #ff4444 !important;
+}
+
+.modal-order-size__submit--loading {
+  color: transparent !important;
+  position: relative;
+}
+
+.modal-order-size__submit--loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid white;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Стили для успешной отправки в modal-order */
+.modal-order__success {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.modal-order__success-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+  color: #4caf50;
+  animation: scaleIn 0.5s ease;
+}
+
+.modal-order__success-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--accent-color);
+  margin-bottom: 15px;
+}
+
+.modal-order__success-text {
+  color: var(--secondary-color);
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+/* Стили для ошибок */
+.modal-order__form-error {
+  color: #ff4444;
+  font-size: 12px;
+  margin-top: 5px;
+  text-align: left;
+}
+
+.modal-order__input.error,
+.modal-order__select.error {
+  border-color: #ff4444 !important;
+}
+
+.modal-order__submit--loading {
+  color: transparent !important;
+  position: relative;
+}
+
+.modal-order__submit--loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid white;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

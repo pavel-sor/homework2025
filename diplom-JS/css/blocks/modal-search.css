@@ -1,0 +1,474 @@
+/* modal-search.css - стили для модального окна поиска */
+
+.modal-search {
+  max-width: 500px;
+  width: 90%;
+}
+
+.modal-search__content {
+  padding: 0;
+}
+
+.modal-search__title {
+  margin-bottom: 8px;
+  text-align: center;
+  color: var(--accent-color);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 130%;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.modal-search__subtitle {
+  text-align: center;
+  color: var(--secondary-color);
+  font-size: 14px;
+  line-height: 130%;
+  margin-bottom: 20px;
+}
+
+/* Форма поиска */
+.modal-search__form {
+  margin-bottom: 20px;
+}
+
+.modal-search__input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.modal-search__search-icon {
+  position: absolute;
+  left: 16px;
+  width: 20px;
+  height: 20px;
+  color: var(--secondary-color);
+  pointer-events: none;
+  transition: color var(--transition-time);
+}
+
+.modal-search__input {
+  width: 100%;
+  padding: 16px 45px 16px 50px;
+  font-size: 16px;
+  line-height: 130%;
+  color: var(--main-color);
+  background-color: transparent;
+  /* border: 2px solid var(--border-color); */
+  border: 1px solid var(--main-color);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color var(--transition-time), box-shadow var(--transition-time);
+}
+
+.modal-search__input:focus {
+  border-color: var(--accent-color);
+  box-shadow: var(--shadow-accent-glow);
+}
+
+.modal-search__input:focus + .modal-search__search-icon {
+  color: var(--accent-color);
+}
+
+.modal-search__input::placeholder {
+  color: var(--secondary-color);
+  opacity: 0.7;
+  font-size: 14px;
+}
+
+.modal-search__clear {
+  position: absolute;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--border-color);
+  color: var(--secondary-color);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-time);
+  border: none;
+  cursor: pointer;
+}
+
+.modal-search__clear svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  transition: transform var(--transition-time);
+}
+
+.modal-search__clear:hover {
+  background: var(--accent-color);
+  color: white;
+  transform: scale(1.05);
+}
+
+.modal-search__clear:hover svg {
+  transform: rotate(90deg);
+}
+
+/* Результаты поиска */
+.modal-search__results {
+
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  /* padding-right: 5px; */
+}
+
+/* Стилизация скроллбара */
+.modal-search__results::-webkit-scrollbar {
+  width: 4px;
+}
+
+.modal-search__results::-webkit-scrollbar-track {
+  background: var(--border-color);
+  border-radius: 2px;
+}
+
+.modal-search__results::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 2px;
+}
+
+.modal-search__results::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-hover-color, var(--accent-color));
+}
+
+/* Состояния */
+.modal-search__initial,
+.modal-search__loading,
+.modal-search__no-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.modal-search__initial-icon,
+.modal-search__no-results-icon {
+  width: 60px;
+  height: 60px;
+  color: var(--border-color); /* Это задает цвет для currentColor */
+  margin-bottom: 16px;
+  stroke: currentColor;
+  fill: none;
+}
+
+/* Для иконки поиска в поле ввода */
+.modal-search__search-icon {
+  color: var(--secondary-color);
+  stroke: currentColor;
+  fill: none;
+}
+
+/* При фокусе на поле ввода */
+.modal-search__input:focus + .modal-search__search-icon {
+  color: var(--accent-color);
+}
+
+/* Для иконки крестика */
+.modal-search__clear svg {
+  color: var(--secondary-color);
+  stroke: currentColor;
+  fill: none;
+}
+
+.modal-search__clear:hover svg {
+  color: white;
+}
+
+/* Спиннер загрузки */
+.modal-search__spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border-color);
+  border-top-color: var(--accent-color);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 16px;
+}
+
+/* Список результатов */
+.modal-search__results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modal-search__result-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  transition: all var(--transition-time);
+  cursor: pointer;
+  color: var(--main-color);
+  text-decoration: none;
+}
+
+.modal-search__result-item:hover {
+  border-color: var(--accent-color);
+  box-shadow: var(--shadow-accent-glow);
+  transform: translateX(4px);
+}
+
+.modal-search__result-image {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  background: var(--card-background, #f5f5f5);
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-search__result-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  max-width: 45px;
+  max-height: 45px;
+  transition: transform var(--transition-time);
+}
+
+.modal-search__result-item:hover .modal-search__result-image img {
+  transform: scale(1.05);
+}
+
+.modal-search__result-info {
+  flex: 1;
+  text-align: left;
+}
+
+.modal-search__result-name {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 130%;
+  margin-bottom: 4px;
+  color: var(--main-color);
+}
+
+.modal-search__result-category {
+  font-size: 12px;
+  line-height: 130%;
+  color: var(--secondary-color);
+}
+
+.modal-search__result-arrow {
+  width: 20px;
+  height: 20px;
+  color: var(--accent-color);
+  opacity: 0;
+  transition: opacity var(--transition-time), transform var(--transition-time);
+}
+
+.modal-search__result-item:hover .modal-search__result-arrow {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+.modal-search__results-count {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 2px solid var(--border-color);
+  text-align: center;
+  color: var(--secondary-color);
+  font-size: 13px;
+  line-height: 130%;
+}
+
+/* Популярные запросы */
+.modal-search__popular {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 2px solid var(--border-color);
+
+}
+
+.modal-search__popular-title {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 130%;
+  color: var(--secondary-color);
+  margin-bottom: 12px;
+}
+
+.modal-search__popular-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.modal-search__popular-tag {
+  padding: 8px 16px;
+  background: transparent;
+  border: 2px solid var(--border-color);
+  border-radius: 30px;
+  color: var(--secondary-color);
+  font-size: 13px;
+  line-height: 130%;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all var(--transition-time);
+}
+
+.modal-search__popular-tag:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  box-shadow: var(--shadow-accent-glow);
+  transform: translateY(-2px);
+}
+
+/* Анимации */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Адаптив */
+@media (width <= 768px) {
+  .modal-search {
+    max-width: 90%;
+  }
+
+  .modal-search__title {
+    font-size: 22px;
+    margin-bottom: 6px;
+  }
+
+  .modal-search__subtitle {
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+
+  .modal-search__input {
+    padding: 14px 40px 14px 45px;
+    font-size: 15px;
+  }
+
+  .modal-search__search-icon {
+    left: 14px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .modal-search__clear {
+    width: 28px;
+    height: 28px;
+    right: 10px;
+  }
+
+  .modal-search__clear svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@media (width <= 576px) {
+  .modal-search__title {
+    font-size: 20px;
+  }
+
+  .modal-search__result-item {
+    padding: 8px 10px;
+    gap: 10px;
+  }
+
+  .modal-search__result-image {
+    width: 40px;
+    height: 40px;
+  }
+
+  .modal-search__result-image img {
+    max-width: 35px;
+    max-height: 35px;
+  }
+
+  .modal-search__result-name {
+    font-size: 14px;
+  }
+
+  .modal-search__result-category {
+    font-size: 11px;
+  }
+
+  .modal-search__popular-tag {
+    padding: 6px 14px;
+    font-size: 12px;
+  }
+
+  .modal-search__initial-icon,
+  .modal-search__no-results-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .modal-search__initial-text,
+  .modal-search__no-results-text {
+    font-size: 15px;
+  }
+
+  .modal-search__no-results-subtext {
+    font-size: 13px;
+  }
+
+  .modal-search__spinner {
+    width: 35px;
+    height: 35px;
+    border-width: 2px;
+  }
+}
+
+@media (width <= 380px) {
+  .modal-search__result-item {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .modal-search__result-info {
+    text-align: center;
+    width: 100%;
+  }
+
+  .modal-search__result-arrow {
+    display: none;
+  }
+
+  .modal-search__popular-tags {
+    justify-content: center;
+  }
+}
+
+/* Темная тема (если используется) */
+@media (prefers-color-scheme: dark) {
+  .modal-search__result-image {
+    background: var(--card-background-dark, #2a2a2a);
+  }
+}
+
+/* Поддержка hover только для устройств с мышью */
+@media (hover: hover) {
+  .modal-search__clear:hover {
+    background: var(--accent-color);
+    color: white;
+  }
+
+  .modal-search__popular-tag:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+  }
+}

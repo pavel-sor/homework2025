@@ -1,0 +1,343 @@
+/* Стили для модального окна корзины */
+.modal-cart {
+  max-width: 600px;
+  width: 90%;
+}
+
+.modal-cart__content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.modal-cart__title {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 130%;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  margin-bottom: 20px;
+}
+
+.modal-cart__items {
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 10px;
+  margin-bottom: 20px;
+}
+
+.modal-cart__items::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-cart__items::-webkit-scrollbar-track {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+.modal-cart__items::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 3px;
+}
+
+.modal-cart__item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.modal-cart__item:last-child {
+  margin-bottom: 0;
+}
+
+.modal-cart__item-img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  background: var(--card-background);
+  border-radius: 8px;
+  padding: 5px;
+}
+
+.modal-cart__item-info {
+  flex: 1;
+  text-align: left;
+}
+
+.modal-cart__item-title {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 130%;
+  margin-bottom: 5px;
+  color: var(--main-color);
+}
+
+.modal-cart__item-size {
+  font-size: 14px;
+  color: var(--secondary-color);
+  margin-bottom: 5px;
+}
+
+.modal-cart__item-price {
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--accent-color);
+}
+
+.modal-cart__item-remove {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--overlay);
+  color: var(--main-color);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.modal-cart__item-remove:hover {
+  background: var(--accent-color);
+  color: white;
+}
+
+.modal-cart__total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-top: 2px solid var(--border-color);
+  border-bottom: 2px solid var(--border-color);
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.modal-cart__total-price {
+  color: var(--accent-color);
+}
+
+.modal-cart__form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal-cart__form-group {
+  position: relative;
+}
+
+.modal-cart__form-label {
+  display: block;
+  text-align: left;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 130%;
+  color: var(--secondary-color);
+  margin-bottom: 5px;
+}
+
+.modal-cart__form-input {
+  width: 100%;
+  padding: 15px 20px;
+  font-size: 16px;
+  color: var(--main-color);
+  background-color: transparent;
+  border: 1px solid var(--main-color);
+  border-radius: 4px;
+  outline: none;
+  transition: var(--transition-time);
+}
+
+.modal-cart__form-input:focus {
+  border-color: var(--accent-color);
+  box-shadow: var(--shadow-accent-glow);
+}
+
+.modal-cart__form-input.error {
+  border-color: #ff4444;
+  animation: shake 0.3s ease;
+}
+
+.modal-cart__form-error {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  font-size: 12px;
+  color: #ff4444;
+  text-align: left;
+}
+
+.modal-cart__form-submit {
+  margin-top: 20px;
+  padding: 18px 30px;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bg-color);
+  background: var(--accent-color);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.modal-cart__form-submit:hover:not(:disabled) {
+  box-shadow: var(--shadow-accent-glow);
+  transform: translateY(-2px);
+}
+
+.modal-cart__form-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.modal-cart__form-submit--loading {
+  color: transparent !important;
+}
+
+.modal-cart__form-submit--loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid white;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.modal-cart__empty {
+  padding: 60px 20px;
+  text-align: center;
+  color: var(--secondary-color);
+  font-size: 18px;
+}
+
+.modal-cart__empty-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+  color: var(--border-color);
+}
+
+.modal-cart__success {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.modal-cart__success-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+  color: #4caf50;
+  animation: scaleIn 0.5s ease;
+}
+
+.modal-cart__success-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--accent-color);
+  margin-bottom: 15px;
+}
+
+.modal-cart__success-text {
+  color: var(--secondary-color);
+  margin-bottom: 30px;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+/* Обновленные стили для кнопок количества */
+.modal-cart__item-quantity {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.modal-cart__item-quantity-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: white;
+  color: var(--bg-color);
+  font-size: 20px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.modal-cart__item-quantity-btn:hover:not(:disabled) {
+  background-color: var(--accent-color);
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-cart__item-quantity-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.modal-cart__item-quantity-btn:disabled {
+  background-color: var(--border-color);
+  color: var(--secondary-color);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.modal-cart__item-quantity span {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--main-color);
+  min-width: 30px;
+  text-align: center;
+}
