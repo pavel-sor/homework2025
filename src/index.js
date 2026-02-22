@@ -12,7 +12,7 @@
     overlay = document.getElementById("overlay"),
     body = document.getElementById("body");
 
-  // Функция для скрытия всех блоков
+  // Функция для скрытия всех блоков - ОПРЕДЕЛЯЕМ СНАЧАЛА
   function hideAllBlocks() {
     tasksHtmlBlock.classList.add("hidden");
     tasksJsBlock.classList.add("hidden");
@@ -20,7 +20,7 @@
     diplomBlock.classList.add("hidden");
   }
 
-  // Функция для снятия активности со всех кнопок
+  // Функция для снятия активности со всех кнопок - ОПРЕДЕЛЯЕМ СНАЧАЛА
   function removeActiveFromAll() {
     tasksHtmlBtn.classList.remove("active");
     tasksJsBtn.classList.remove("active");
@@ -28,7 +28,13 @@
     diplomBtn.classList.remove("active");
   }
 
-  // Обработчик для кнопки HTML
+  // ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ - ТЕПЕРЬ ФУНКЦИИ УЖЕ ОПРЕДЕЛЕНЫ
+  hideAllBlocks();
+  removeActiveFromAll();
+  tasksHtmlBlock.classList.remove("hidden"); // Показываем блок HTML
+  tasksHtmlBtn.classList.add("active"); // Активируем кнопку HTML
+
+  // Обработчик для кнопки HTML (ОДИН, а не два)
   tasksHtmlBtn.onclick = function() {
     removeActiveFromAll();
     this.classList.add("active");
@@ -59,7 +65,7 @@
     sidebar.classList.remove("show");
     overlay.classList.remove("show");
     body.classList.remove("overflow");
-  }; // <-- Здесь была лишняя закрывающая скобка и скобка вызова
+  }; // Правильное закрытие
 
   // Обработчик для кнопки Диплом
   diplomBtn.onclick = function() {
