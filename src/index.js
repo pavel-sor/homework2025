@@ -1,51 +1,81 @@
 !(function () {
-  let s = document.getElementById("tasks"),
-    y = document.getElementById("tasks2"),
-    e = document.getElementById("diplom"),
-    t = document.getElementById("tasksBlock"),
-    p = document.getElementById("tasksBlock2"),
-    l = document.getElementById("diplomBlock"),
-    i = document.getElementById("burger"),
-    o = document.getElementById("sidebar"),
-    c = document.getElementById("overlay"),
-    d = document.getElementById("body");
+  let tasksHtmlBtn = document.getElementById("tasks"),
+    tasksJsBtn = document.getElementById("tasks2"),
+    tasksPhpBtn = document.getElementById("tasksPhp"),
+    diplomBtn = document.getElementById("diplom"),
+    tasksHtmlBlock = document.getElementById("tasksBlock"),
+    tasksJsBlock = document.getElementById("tasksBlock2"),
+    tasksPhpBlock = document.getElementById("tasksPhpBlock"),
+    diplomBlock = document.getElementById("diplomBlock"),
+    burger = document.getElementById("burger"),
+    sidebar = document.getElementById("sidebar"),
+    overlay = document.getElementById("overlay"),
+    body = document.getElementById("body");
 
-  // Инициализация - скрываем второй блок
-  p.classList.add("hidden");
+  // Функция для скрытия всех блоков
+  function hideAllBlocks() {
+    tasksHtmlBlock.classList.add("hidden");
+    tasksJsBlock.classList.add("hidden");
+    tasksPhpBlock.classList.add("hidden");
+    diplomBlock.classList.add("hidden");
+  }
 
-  ((s.onclick = function () {
-    (e.classList.remove("active"),
-      y.classList.remove("active"),
-      this.classList.add("active"),
-      t.classList.remove("hidden"),
-      p.classList.add("hidden"), // Добавлено: скрываем второй блок
-      l.classList.add("hidden"),
-      o.classList.remove("show"),
-      c.classList.remove("show"));
-  }),
-    (y.onclick = function () { // Добавлено: обработка для второй кнопки
-      (s.classList.remove("active"),
-        e.classList.remove("active"),
-        this.classList.add("active"),
-        p.classList.remove("hidden"), // Показываем второй блок
-        t.classList.add("hidden"), // Скрываем первый блок
-        l.classList.add("hidden"),
-        o.classList.remove("show"),
-        c.classList.remove("show"));
-    }),
-    (e.onclick = function () {
-      (s.classList.remove("active"),
-        y.classList.remove("active"), // Добавлено: снимаем активность с tasks2
-        this.classList.add("active"),
-        l.classList.remove("hidden"),
-        t.classList.add("hidden"),
-        p.classList.add("hidden"), // Добавлено: скрываем второй блок
-        o.classList.remove("show"),
-        c.classList.remove("show"));
-    }),
-    (i.onclick = function () {
-      (d.classList.toggle("overflow"),
-        c.classList.toggle("show"),
-        o.classList.toggle("show"));
-    }));
+  // Функция для снятия активности со всех кнопок
+  function removeActiveFromAll() {
+    tasksHtmlBtn.classList.remove("active");
+    tasksJsBtn.classList.remove("active");
+    tasksPhpBtn.classList.remove("active");
+    diplomBtn.classList.remove("active");
+  }
+
+  // Обработчик для кнопки HTML
+  tasksHtmlBtn.onclick = function() {
+    removeActiveFromAll();
+    this.classList.add("active");
+    hideAllBlocks();
+    tasksHtmlBlock.classList.remove("hidden");
+    sidebar.classList.remove("show");
+    overlay.classList.remove("show");
+    body.classList.remove("overflow");
+  };
+
+  // Обработчик для кнопки JS
+  tasksJsBtn.onclick = function() {
+    removeActiveFromAll();
+    this.classList.add("active");
+    hideAllBlocks();
+    tasksJsBlock.classList.remove("hidden");
+    sidebar.classList.remove("show");
+    overlay.classList.remove("show");
+    body.classList.remove("overflow");
+  };
+
+  // Обработчик для кнопки PHP
+  tasksPhpBtn.onclick = function() {
+    removeActiveFromAll();
+    this.classList.add("active");
+    hideAllBlocks();
+    tasksPhpBlock.classList.remove("hidden");
+    sidebar.classList.remove("show");
+    overlay.classList.remove("show");
+    body.classList.remove("overflow");
+  };
+
+  // Обработчик для кнопки Диплом
+  diplomBtn.onclick = function() {
+    removeActiveFromAll();
+    this.classList.add("active");
+    hideAllBlocks();
+    diplomBlock.classList.remove("hidden");
+    sidebar.classList.remove("show");
+    overlay.classList.remove("show");
+    body.classList.remove("overflow");
+  };
+
+  // Обработчик для бургер-меню
+  burger.onclick = function() {
+    body.classList.toggle("overflow");
+    overlay.classList.toggle("show");
+    sidebar.classList.toggle("show");
+  };
 })();
