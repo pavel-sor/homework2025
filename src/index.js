@@ -59,7 +59,7 @@
     sidebar.classList.remove("show");
     overlay.classList.remove("show");
     body.classList.remove("overflow");
-  };
+  }; // <-- Здесь была лишняя закрывающая скобка и скобка вызова
 
   // Обработчик для кнопки Диплом
   diplomBtn.onclick = function() {
