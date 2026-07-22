@@ -1,0 +1,443 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f8fafc;
+  color: #1e293b;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===== ХЕДЕР ===== */
+header {
+  background: #053C3C;;
+  color: white;
+  padding: 20px 0;
+  border-bottom: 4px solid #f59e0b;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.logo  {
+width: 200px;
+}
+
+.logo p {
+  font-size: 14px;
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.header-contacts {
+  text-align: right;
+}
+.header-contacts a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 20px;
+  display: block;
+}
+.header-contacts a i {
+  color: #f59e0b;
+  margin-right: 8px;
+}
+.header-contacts small {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.cta-btn {
+  background: #f59e0b;
+  color: #053C3C
+;
+  padding: 12px 28px;
+  border-radius: 40px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  display: inline-block;
+}
+.cta-btn:hover {
+  background: #d97706;
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+}
+.cta-btn i {
+  margin-right: 8px;
+}
+
+/* ===== ГЕРОЙ (ПЕРВЫЙ ЭКРАН) ===== */
+.hero {
+  padding: 70px 0 60px;
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  border-bottom: 1px solid #cbd5e1;
+}
+.hero-grid {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+.hero-text {
+  flex: 1 1 50%;
+}
+.hero-text .badge {
+  background: #053C3C
+;
+  color: white;
+  padding: 6px 18px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.hero-text h1 {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: #053C3C
+;
+}
+.hero-text h1 span {
+  color: #d97706;
+}
+.hero-text p {
+  font-size: 18px;
+  color: #334155;
+  margin-bottom: 30px;
+  max-width: 500px;
+}
+.hero-stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 30px;
+}
+.hero-stats div {
+  text-align: left;
+}
+.hero-stats strong {
+  font-size: 28px;
+  color: #053C3C
+;
+  display: block;
+}
+.hero-stats span {
+  color: #475569;
+  font-size: 14px;
+}
+
+.hero-image {
+  flex: 1 1 40%;
+  background: #053C3C
+;
+  padding: 30px 20px;
+  border-radius: 20px;
+  color: white;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.2);
+  text-align: center;
+}
+.hero-image i {
+  font-size: 60px;
+  color: #f59e0b;
+  margin-bottom: 15px;
+}
+.hero-image h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+.hero-image p {
+  color: #94a3b8;
+  font-size: 15px;
+}
+
+/* ===== УСЛУГИ (3 ВИДА) ===== */
+.services {
+  padding: 70px 0;
+  background: white;
+}
+.section-title {
+  font-size: 36px;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 15px;
+}
+.section-sub {
+  text-align: center;
+  color: #475569;
+  max-width: 600px;
+  margin: 0 auto 50px;
+  font-size: 18px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+.service-card {
+  background: #f8fafc;
+  padding: 30px 25px;
+  border-radius: 16px;
+  border-left: 5px solid #f59e0b;
+  transition: 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.05);
+}
+.service-card i {
+  font-size: 36px;
+  color: #d97706;
+  margin-bottom: 15px;
+}
+.service-card h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+.service-card p {
+  color: #475569;
+}
+
+/* ===== ПОЧЕМУ МЫ (КЛЮЧЕВОЙ БЛОК) ===== */
+.why-us {
+  padding: 70px 0;
+  background: #053C3C
+;
+  color: white;
+}
+.why-us .section-title {
+  color: white;
+}
+.why-us .section-sub {
+  color: #94a3b8;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+.why-item {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 30px 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: center;
+  transition: 0.3s;
+}
+.why-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #f59e0b;
+}
+.why-item i {
+  font-size: 40px;
+  color: #f59e0b;
+  margin-bottom: 20px;
+}
+.why-item h4 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+.why-item p {
+  color: #cbd5e1;
+  font-size: 15px;
+}
+
+/* ===== ЭКСКЛЮЗИВ: ЗОНЫ ОТВЕТСТВЕННОСТИ ===== */
+.responsibility {
+  padding: 70px 0;
+  background: #f1f5f9;
+}
+.resp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+.resp-card {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+  border-top: 4px solid #053C3C
+;
+}
+.resp-card h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.resp-card h4 i {
+  color: #d97706;
+}
+.resp-card p {
+  color: #475569;
+  font-size: 15px;
+}
+
+/* ===== ОПАСНЫЕ ГРУЗЫ (ЭКСПЕРТИЗА) ===== */
+.danger-goods {
+  padding: 70px 0;
+  background: white;
+}
+.danger-flex {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.danger-text {
+  flex: 1 1 50%;
+}
+.danger-text h2 {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+.danger-text ul {
+  list-style: none;
+  margin-top: 20px;
+}
+.danger-text ul li {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.danger-text ul li i {
+  color: #d97706;
+  font-size: 20px;
+  margin-top: 3px;
+}
+.danger-badge {
+  flex: 1 1 30%;
+  background: #053C3C
+;
+  padding: 40px 30px;
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+}
+.danger-badge i {
+  font-size: 50px;
+  color: #f59e0b;
+}
+.danger-badge strong {
+  display: block;
+  font-size: 26px;
+  margin: 15px 0 5px;
+}
+
+/* ===== ПРИЗЫВ К ДЕЙСТВИЮ ===== */
+.cta-section {
+  padding: 60px 0;
+  background: linear-gradient(135deg, #053C3C
+, #1e293b);
+  color: white;
+  text-align: center;
+}
+.cta-section h2 {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+.cta-section p {
+  color: #94a3b8;
+  max-width: 500px;
+  margin: 0 auto 30px;
+}
+.cta-section .cta-btn {
+  background: #f59e0b;
+  color: #053C3C
+;
+  font-size: 20px;
+  padding: 16px 48px;
+}
+.cta-section .cta-btn:hover {
+  background: #fbbf24;
+}
+
+/* ===== ФУТЕР ===== */
+footer {
+  background: #053C3C
+;
+  color: #94a3b8;
+  padding: 40px 0;
+  border-top: 1px solid #1e293b;
+}
+.footer-grid {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+.footer-grid div p {
+  margin: 5px 0;
+}
+.footer-grid a {
+  color: #94a3b8;
+  text-decoration: none;
+}
+.footer-grid a:hover {
+  color: #f59e0b;
+}
+.footer-copy {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #1e293b;
+  font-size: 14px;
+}
+
+/* ===== АДАПТИВ ===== */
+@media (max-width: 768px) {
+  .hero-text h1 {
+    font-size: 32px;
+  }
+  .hero-stats {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .header-flex {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  .header-contacts {
+    text-align: center;
+  }
+  .danger-flex {
+    flex-direction: column;
+  }
+  .section-title {
+    font-size: 28px;
+  }
+}
