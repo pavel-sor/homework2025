@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Топливный Трейдинг и Логистика — 10 лет на рынке</title>
+    <!-- Шрифты для строгого и профессионального вида -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <!-- Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ===== ОБНУЛЕНИЕ ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* ===== СЛАЙДЕР НА ВЕСЬ ЭКРАН ===== */
+        .slider-wrapper {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: #1a1a1a;
+            overflow: visible !important;
+            perspective: 1200px;
+        }
+
+        /* Слайды */
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1;
+            transform-style: preserve-3d;
+            overflow: visible !important;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            z-index: 2;
+        }
+
+        /* Контейнер для фона */
+        .slide-bg-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: visible !important;
+            transform-style: preserve-3d;
+        }
+
+        .slide-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transform-style: preserve-3d;
+            transition: all 0s ease;
+            transform: scale(1.5) rotate(0deg) translateX(0px);
+            filter: brightness(1);
+            opacity: 1;
+        }
+
+        /* Анимация для слайдов */
+        .slide[data-slide="0"] .slide-bg {
+            animation: slideRotate 45s linear infinite;
+        }
+
+        .slide[data-slide="1"] .slide-bg {
+            animation: slideRotate 35s linear infinite;
+        }
+
+        @keyframes slideRotate {
+            0% {
+                transform: scale(2.0) rotate(25deg) translateX(-80px);
+                filter: brightness(0.2) blur(5px);
+                opacity: 0;
+            }
+            5% {
+                transform: scale(1.8) rotate(20deg) translateX(-50px);
+                filter: brightness(0.3) blur(3px);
+                opacity: 0.5;
+            }
+            15% {
+                transform: scale(1.6) rotate(10deg) translateX(-20px);
+                filter: brightness(0.6) blur(1px);
+                opacity: 1;
+            }
+            25% {
+                transform: scale(1.5) rotate(5deg) translateX(0px);
+                filter: brightness(0.8);
+                opacity: 1;
+            }
+            35% {
+                transform: scale(1.55) rotate(8deg) translateX(15px);
+                filter: brightness(1);
+                opacity: 1;
+            }
+            45% {
+                transform: scale(1.5) rotate(3deg) translateX(-10px);
+                filter: brightness(0.9);
+                opacity: 1;
+            }
+            55% {
+                transform: scale(1.55) rotate(12deg) translateX(20px);
+                filter: brightness(1);
+                opacity: 1;
+            }
+            65% {
+                transform: scale(1.5) rotate(6deg) translateX(-15px);
+                filter: brightness(0.95);
+                opacity: 1;
+            }
+            75% {
+                transform: scale(1.55) rotate(9deg) translateX(10px);
+                filter: brightness(1);
+                opacity: 1;
+            }
+            85% {
+                transform: scale(1.5) rotate(4deg) translateX(-5px);
+                filter: brightness(0.95);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.55) rotate(8deg) translateX(10px);
+                filter: brightness(1);
+                opacity: 1;
+            }
+        }
+
+        /* Оверлей */
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.8s ease 0.3s;
+        }
+
+        .slide.active .slide-overlay {
+            opacity: 1;
+        }
+
+        .slide-overlay.light-dark {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        /* Контент слайда */
+        .slide-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+            width: 90%;
+            max-width: 800px;
+            text-align: left;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            overflow: visible !important;
+            padding: 20px;
+        }
+
+        .slide-content * {
+            pointer-events: auto;
+        }
+
+        .slide-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(32px, 8vw, 109px);
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 1px;
+            line-height: 1.1;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            text-align: left;
+            width: 100%;
+            opacity: 0;
+            transform: scale(0.8) rotateY(20deg);
+        }
+
+        .slide.active .slide-title {
+            animation: textAppear 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            animation-delay: 1.8s;
+        }
+
+        .slide-desc {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(14px, 1.5vw, 22px);
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: #fff;
+            letter-spacing: 3.62px;
+            line-height: 1.6;
+            max-width: 600px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            text-align: left;
+            opacity: 0;
+            transform: scale(0.8) rotateY(20deg);
+        }
+
+        .slide.active .slide-desc {
+            animation: textAppear 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            animation-delay: 2.3s;
+        }
+
+        /* Кнопка в слайдере */
+        .slide-btn {
+            display: inline-block;
+            font-family: 'Roboto', sans-serif;
+            font-size: clamp(14px, 1.2vw, 19px);
+            font-weight: 500;
+            color: #000000;
+            text-decoration: none;
+            padding: 0 clamp(25px, 4vw, 56px);
+            line-height: clamp(40px, 4vw, 56px);
+            border-radius: 5px;
+            background: linear-gradient(135deg, #FF9500 0%, #FF5E3A 100%);
+            box-shadow: 0 9px 19px rgba(0, 0, 0, 0.25);
+            transition: all 0.3s ease;
+            margin: 15px 0;
+            align-self: flex-start;
+            opacity: 0;
+            transform: scale(0.8) rotateY(20deg);
+            position: relative;
+            overflow: visible !important;
+            cursor: pointer;
+            border: none;
+            transform-origin: center center;
+            will-change: transform;
+            z-index: 5;
+        }
+
+        .slide.active .slide-btn {
+            animation: textAppear 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            animation-delay: 2.8s;
+        }
+
+        .slide-btn:hover {
+            transform: scale(1.1) rotateY(20deg) !important;
+            box-shadow: 0 12px 25px rgba(255, 149, 0, 0.4);
+            background: linear-gradient(135deg, #FF8C00 0%, #FF4500 100%);
+            overflow: visible !important;
+            z-index: 10;
+        }
+
+        .slide-btn:active {
+            transform: scale(0.95) rotateY(20deg) !important;
+            box-shadow: 0 5px 10px rgba(255, 149, 0, 0.3);
+        }
+
+        .slide-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .slide-btn:hover::before {
+            width: 100%;
+            height: 100%;
+            max-width: 300px;
+            max-height: 300px;
+        }
+
+        @keyframes textAppear {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) rotateY(30deg) translateZ(-50px);
+                filter: brightness(0.3);
+            }
+            60% {
+                opacity: 1;
+                transform: scale(1.1) rotateY(-5deg) translateZ(10px);
+                filter: brightness(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotateY(0deg) translateZ(0px);
+                filter: brightness(1);
+            }
+        }
+
+        /* ===== НАВИГАЦИЯ СЛАЙДЕРА ===== */
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 30 !important;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            font-size: clamp(30px, 3vw, 60px);
+            width: clamp(50px, 5vw, 70px);
+            height: clamp(50px, 5vw, 70px);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            opacity: 1 !important;
+            pointer-events: auto;
+        }
+
+        .slider-prev {
+            left: 20px;
+        }
+
+        .slider-next {
+            right: 20px;
+        }
+
+        .slider-nav:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #5AC8FA;
+            color: #5AC8FA;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        /* Индикаторы */
+        .slider-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 30 !important;
+            display: flex;
+            gap: 10px;
+            opacity: 1 !important;
+        }
+
+        .slider-dot {
+            width: clamp(40px, 8vw, 100px);
+            height: 3px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+
+        .slider-dot.active {
+            background: #5AC8FA;
+        }
+
+        .slider-dot:hover {
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        /* ===== HEADER (поверх слайдера) ===== */
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 20;
+            padding: 15px 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            pointer-events: none;
+        }
+
+        header * {
+            pointer-events: auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .header_logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header_logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .header_logo p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .header-contacts {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .header-contacts a {
+            color: #f59e0b;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .header-contacts a:hover {
+            color: #ffb700;
+        }
+
+        .header-contacts small {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 12px;
+        }
+
+        .cta-btn {
+            background: #f59e0b;
+            color: #0f172a;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            background: #d97706;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
+        }
+
+        /* ===== ОСТАЛЬНЫЕ СЕКЦИИ ===== */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 4vw, 48px);
+            font-weight: 800;
+            color: #0f172a;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: #64748b;
+            font-size: 18px;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Услуги */
+        .services {
+            background: #f8fafc;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card i {
+            font-size: 40px;
+            color: #f59e0b;
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Почему мы */
+        .why-us {
+            background: white;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+        }
+
+        .why-item {
+            text-align: center;
+            padding: 25px;
+        }
+
+        .why-item i {
+            font-size: 36px;
+            color: #f59e0b;
+            margin-bottom: 15px;
+        }
+
+        .why-item h4 {
+            font-size: 18px;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+
+        .why-item p {
+            color: #64748b;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Зона ответственности */
+        .responsibility {
+            background: #f8fafc;
+        }
+
+        .resp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .resp-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #f59e0b;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+        }
+
+        .resp-card h4 {
+            color: #0f172a;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .resp-card h4 i {
+            color: #f59e0b;
+            margin-right: 8px;
+        }
+
+        .resp-card p {
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Опасные грузы */
+        .danger-goods {
+            background: white;
+        }
+
+        .danger-flex {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .danger-text ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .danger-text ul li {
+            padding: 8px 0;
+            color: #334155;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .danger-text ul li i {
+            color: #f59e0b;
+            font-size: 18px;
+        }
+
+        .danger-badge {
+            background: #0f172a;
+            padding: 40px 30px;
+            border-radius: 16px;
+            text-align: center;
+            color: white;
+        }
+
+        .danger-badge i {
+            font-size: 48px;
+            color: #f59e0b;
+        }
+
+        .danger-badge strong {
+            display: block;
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        .danger-badge .badge-inner {
+            background: rgba(245, 158, 11, 0.15);
+            padding: 12px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            color: #94a3b8;
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        /* Футер */
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 40px 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-grid a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-grid a:hover {
+            color: #f59e0b;
+        }
+
+        .footer-copy {
+            text-align: center;
+            border-top: 1px solid #1e293b;
+            padding-top: 20px;
+            font-size: 14px;
+        }
+
+        .footer-docs {
+            text-align: center;
+            margin: 20px 0 15px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 14px;
+        }
+
+        .footer-docs a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-docs a:hover {
+            color: #f59e0b;
+        }
+
+        .footer-docs span {
+            color: #334155;
+        }
+
+        /* Адаптив */
+        @media (max-width: 768px) {
+            .header-flex {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .header-contacts {
+                align-items: center;
+            }
+
+            .danger-flex {
+                grid-template-columns: 1fr;
+            }
+
+            .slide-content {
+                width: 90%;
+                padding: 10px;
+            }
+
+            .slider-nav {
+                width: 45px;
+                height: 45px;
+                font-size: 24px;
+            }
+
+            .slider-prev {
+                left: 10px;
+            }
+
+            .slider-next {
+                right: 10px;
+            }
+
+            .slider-dots {
+                bottom: 20px;
+                gap: 8px;
+            }
+
+            .slider-dot {
+                width: 50px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slide-content {
+                width: 95%;
+                padding: 8px;
+            }
+
+            .slider-nav {
+                width: 38px;
+                height: 38px;
+                font-size: 18px;
+            }
+
+            .slider-dots {
+                bottom: 15px;
+                gap: 6px;
+            }
+
+            .slider-dot {
+                width: 30px;
+            }
+
+            section {
+                padding: 50px 0;
+            }
+
+            .cta-section h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== СЛАЙДЕР (ПЕРВЫЙ ЭКРАН) ===== -->
+    <div class="slider-wrapper">
+        <div class="slider-container" id="slider">
+
+            <!-- HEADER ПОВЕРХ СЛАЙДЕРА -->
+            <header>
+                <div class="container header-flex">
+                    <div class="header_logo">
+                        <img src="img/logo.png" alt="ЛК-Мотор" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2250%22 height=%2250%22%3E%3Crect width=%2250%22 height=%2250%22 fill=%22%23f59e0b%22/%3E%3Ctext x=%225%22 y=%2235%22 font-size=%2224%22 fill=%22white%22%3EЛК%3C/text%3E%3C/svg%3E'">
+                        <p>Оптовая торговля топливом с 2016 года</p>
+                    </div>
+                    <div class="header-contacts">
+                        <a href="tel:+79397014409"><i class="fas fa-phone-alt"></i> 8 (939) 701 44 09</a>
+                        <small>Ежедневно с 8:00 до 20:00</small>
+                    </div>
+                    <a href="#contact" class="cta-btn"><i class="fas fa-paper-plane"></i> Оставить заявку</a>
+                </div>
+            </header>
+
+            <!-- Слайд 1 -->
+            <div class="slide active" data-slide="0">
+                <div class="slide-bg-wrapper">
+                    <img class="slide-bg"
+                        src="https://webdeveloper193.ru/wp-content/uploads/2026/07/abstract-wavy-background-1536x1024.png"
+                        alt="Фон слайда" loading="lazy">
+                </div>
+                <div class="slide-overlay light-dark"></div>
+                <div class="slide-content">
+                    <h1 class="slide-title">ЛК-Мотор</h1>
+                    <p class="slide-desc">Оптовая торговля топливом с 2016 года</p>
+                    <a href="tel:+79397014409" class="slide-btn">Консультация</a>
+                </div>
+            </div>
+
+            <!-- Слайд 2 -->
+            <div class="slide" data-slide="1">
+                <div class="slide-bg-wrapper">
+                    <img class="slide-bg"
+                        src="https://webdeveloper193.ru/wp-content/uploads/2026/07/magnific_surreal-abstraction-of-pr_fFmIKoHCDY.png"
+                        alt="Фон слайда" loading="lazy">
+                </div>
+                <div class="slide-overlay light-dark"></div>
+                <div class="slide-content">
+                    <h1 class="slide-title">12 лет</h1>
+                    <p class="slide-desc">На рынке топливного трейдинга</p>
+                    <a href="tel:+79397014409" class="slide-btn">Консультация</a>
+                </div>
+            </div>
+
+            <!-- Кнопки навигации -->
+            <button class="slider-nav slider-prev" id="prevBtn" aria-label="Предыдущий слайд">‹</button>
+            <button class="slider-nav slider-next" id="nextBtn" aria-label="Следующий слайд">›</button>
+
+            <!-- Индикаторы -->
+            <div class="slider-dots" id="dotsContainer">
+                <button class="slider-dot active" data-index="0" aria-label="Слайд 1"></button>
+                <button class="slider-dot" data-index="1" aria-label="Слайд 2"></button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ===== 3 НАПРАВЛЕНИЯ УСЛУГ ===== -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Мы решаем <span style="color: #d97706;">3 задачи</span> вашего бизнеса</h2>
+            <p class="section-sub">От простой купли-продажи до сложной логистики с ответственностью за каждый этап.</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>1. Трейдинг (купля-продажа)</h3>
+                    <p>Вы оплачиваете и забираете топливо самовывозом с нашего склада или завода. Прозрачные цены, полный пакет документов.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-truck"></i>
+                    <h3>2. Доставка с заводов</h3>
+                    <p>Мы привозим топливо напрямую с заводов-изготовителей своим автотранспортом. Без посредников и наценок.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-route"></i>
+                    <h3>3. Логистика и экспедирование</h3>
+                    <p>Полный цикл: маршрутизация, сопровождение, таможенное оформление (при необходимости), контроль груза 24/7.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ПОЧЕМУ МЫ ===== -->
+    <section class="why-us">
+        <div class="container">
+            <h2 class="section-title">Почему выбирают <span style="color: #f59e0b;">именно нас</span></h2>
+            <p class="section-sub">4 столпа, которые делают нас лидерами в сегменте оптовых поставок топлива.</p>
+            <div class="why-grid">
+                <div class="why-item">
+                    <i class="fas fa-coins"></i>
+                    <h4>Ценовая политика</h4>
+                    <p>Прямые контракты с заводами и оптимизация логистики позволяют нам предлагать цены на 7-12% ниже среднерыночных.</p>
+                </div>
+                <div class="why-item">
+                    <i class="fas fa-clock"></i>
+                    <h4>Скорость доставки</h4>
+                    <p>Собственный парк из 30+ машин и диспетчерская служба обеспечивают оперативность. Доставка за 24 часа по ЦФО.</p>
+                </div>
+                <div class="why-item">
+                    <i class="fas fa-headset"></i>
+                    <h4>Высокий уровень сервиса</h4>
+                    <p>Персональный менеджер, онлайн-отслеживание груза, оперативное решение любых вопросов 24/7.</p>
+                </div>
+                <div class="why-item">
+                    <i class="fas fa-hard-hat"></i>
+                    <h4>Безопасность и профессионализм</h4>
+                    <p>Водители с категорией Е, допуском к опасным грузам (ADR). Полная материальная ответственность.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ЗОНА ОТВЕТСТВЕННОСТИ ===== -->
+    <section class="responsibility">
+        <div class="container">
+            <h2 class="section-title">Наша <span style="color: #d97706;">зона ответственности</span></h2>
+            <p class="section-sub">Мы не перекладываем задачи на клиента. Чёткое распределение обязанностей — залог безупречной работы.</p>
+            <div class="resp-grid">
+                <div class="resp-card">
+                    <h4><i class="fas fa-file-signature"></i> Документооборот</h4>
+                    <p>Полное юридическое сопровождение сделки: счета-фактуры, ТТН, сертификаты качества, паспорта безопасности.</p>
+                </div>
+                <div class="resp-card">
+                    <h4><i class="fas fa-truck-fast"></i> Доставка и разгрузка</h4>
+                    <p>Организация доставки «точно вовремя». Встреча груза, разгрузка на вашем складе, подписание актов.</p>
+                </div>
+                <div class="resp-card">
+                    <h4><i class="fas fa-shield-virus"></i> Безопасность груза</h4>
+                    <p>Страхование груза на весь период перевозки. Контроль температурного режима и герметичности для газов.</p>
+                </div>
+                <div class="resp-card">
+                    <h4><i class="fas fa-chart-line"></i> Мониторинг</h4>
+                    <p>GPS-трекинг каждой машины. Ежечасная отчетность о местоположении и статусе доставки.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ОПАСНЫЕ ГРУЗЫ ===== -->
+    <section class="danger-goods">
+        <div class="container danger-flex">
+            <div class="danger-text">
+                <span style="background: #fef3c7; padding: 4px 16px; border-radius: 30px; font-weight: 600; color: #92400e; display: inline-block; margin-bottom: 12px;">Экспертиза</span>
+                <h2 style="font-size: clamp(28px, 3.5vw, 42px);">Перевозка опасных грузов — <span style="color: #d97706;">наш профиль</span></h2>
+                <p style="color: #334155; margin-bottom: 10px;">Работаем с классами 2, 3, 4 и 9 по ДОПОГ. Соблюдаем все требования безопасности.</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Специальная подготовка водителей и наличие ADR-свидетельств.</li>
+                    <li><i class="fas fa-check-circle"></i> Согласование маршрутов с ГИБДД и Ространснадзором.</li>
+                    <li><i class="fas fa-check-circle"></i> Предоставляем полный пакет: паспорт безопасности, инструкция по ликвидации аварий.</li>
+                    <li><i class="fas fa-check-circle"></i> Консультация по классам опасности, упаковке и совместимости грузов.</li>
+                </ul>
+            </div>
+            <div class="danger-badge">
+                <i class="fas fa-exclamation-triangle"></i>
+                <strong>ДОПОГ</strong>
+                <p style

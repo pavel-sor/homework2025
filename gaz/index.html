@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Топливный Трейдинг и Логистика — 10 лет на рынке</title>
+    <!-- Шрифты для строгого и профессионального вида -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="slaid.css">
+
+</head>
+
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container header-flex">
+            <div class="heder_logo">
+                <img class="logo" src="img/logo.png" alt="">
+                <p>Оптовая торговля топливом с 2016 года</p>
+            </div>
+            <div class="header-contacts">
+                <a href="tel:+79397014409"><i class="fas fa-phone-alt"></i> 8 (939) 701 44 09</a>
+                <small>Ежедневно с 8:00 до 20:00</small>
+            </div>
+            <a href="#contact" class="cta-btn"><i class="fas fa-paper-plane"></i> Оставить заявку</a>
+        </div>
+    </header>
+
+    <!-- ===== ГЕРОЙ ===== -->
+
+    <div class="slider-wrapper">
+        <div class="slider-container loaded" id="slider">
+
+            <!-- Слайд 1 -->
+            <div class="slide active" data-slide="0">
+                <div class="slide-bg-wrapper">
+                    <img class="slide-bg"
+                        src="https://webdeveloper193.ru/wp-content/uploads/2026/07/abstract-wavy-background-1536x1024.png"
+                        alt="Фон слайда" loading="lazy">
+                </div>
+                <div class="slide-overlay light-dark"></div>
+                <div class="slide-content">
+                    <h1 class="slide-title">ЛК-Мотор</h1>
+                    <p class="slide-desc">Надёжный поставщик топлива для вашего бизнеса</p>
+                    <a href="app.html" class="slide-btn">Консультация</a>
+                </div>
+            </div>
+
+            <!-- Слайд 2 -->
+            <div class="slide" data-slide="1">
+                <div class="slide-bg-wrapper">
+                    <img class="slide-bg"
+                        src="https://webdeveloper193.ru/wp-content/uploads/2026/07/magnific_surreal-abstraction-of-pr_fFmIKoHCDY.png"
+                        alt="Фон слайда" loading="lazy">
+                </div>
+                <div class="slide-overlay light-dark"></div>
+                <div class="slide-content">
+                    <h1 class="slide-title">Доставка своим транспортом</h1>
+                    <p class="slide-desc">Прямые поставки с заводов. Без посредников и наценок</p>
+                    <a href="app.html" class="slide-btn">Консультация</a>
+                </div>
+            </div>
+
+            <!-- Слайд 3 -->
+            <div class="slide" data-slide="2">
+                <div class="slide-bg-wrapper">
+                    <img class="slide-bg"
+                        src="https://webdeveloper193.ru/wp-content/uploads/2026/07/abstract-wavy-background-1536x1024.png"
+                        alt="Фон слайда" loading="lazy">
+                </div>
+                <div class="slide-overlay light-dark"></div>
+                <div class="slide-content">
+                    <h1 class="slide-title">Логистика и экспедирование</h1>
+                    <p class="slide-desc">Полный цикл: маршрутизация, сопровождение, контроль груза 24/7</p>
+                    <a href="app.html" class="slide-btn">Консультация</a>
+                </div>
+            </div>
+
+            <!-- Слайд 4 -->
+            <div class="slide" data-slide="3">
+                <div class="slide-bg-wrapper">
+                    <img class="slide-bg"
+                        src="https://webdeveloper193.ru/wp-content/uploads/2026/07/magnific_surreal-abstraction-of-pr_fFmIKoHCDY.png"
+                        alt="Фон слайда" loading="lazy">
+                </div>
+                <div class="slide-overlay light-dark"></div>
+                <div class="slide-content">
+                    <h1 class="slide-title">10 лет надёжности</h1>
+                    <p class="slide-desc">98% доставок точно в срок. Работаем с 2016 года</p>
+                    <a href="app.html" class="slide-btn">Консультация</a>
+                </div>
+            </div>
+
+            <!-- Кнопки навигации -->
+            <button class="slider-nav slider-prev" id="prevBtn" aria-label="Предыдущий слайд">‹</button>
+            <button class="slider-nav slider-next" id="nextBtn" aria-label="Следующий слайд">›</button>
+
+            <!-- Индикаторы -->
+            <div class="slider-dots" id="dotsContainer">
+                <button class="slider-dot active" data-index="0" aria-label="Слайд 1"></button>
+                <button class="slider-dot" data-index="1" aria-label="Слайд 2"></button>
+                <button class="slider-dot" data-index="2" aria-label="Слайд 3"></button>
+                <button class="slider-dot" data-index="3" aria-label="Слайд 4"></button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ===== ГЕРОЙ (ПЕРВЫЙ ЭКРАН) С ФОРМОЙ ===== -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <!-- Левая часть: текст -->
+            <div class="hero-text">
+                <div class="badge"><i class="fas fa-shield-alt"></i> Надёжный партнёр №1</div>
+                <h1>Твёрдое, жидкое и газообразное <span>топливо</span> в любых объёмах</h1>
+                <p>Более 10 лет мы обеспечиваем предприятия топливом по лучшим ценам. Трейдинг, доставка своим
+                    транспортом, полное логистическое сопровождение.</p>
+                <div class="hero-stats">
+                    <div><strong>10+</strong><span>лет на рынке</span></div>
+                    <div><strong>240+</strong><span>постоянных клиентов</span></div>
+                    <div><strong>98%</strong><span>доставок точно в срок</span></div>
+                </div>
+            </div>
+
+            <!-- ===== ПРАВАЯ ЧАСТЬ: ФОРМА ===== -->
+            <div class="hero-form">
+                <h3>Получите предложение</h3>
+                <p>Мы свяжемся с вами в течение 30 минут</p>
+
+                <form action="#" method="POST" id="heroForm" onsubmit="return validateHeroForm()">
+                    <div>
+                        <input type="text" id="hero_name" name="name" placeholder="Ваше имя *" required>
+                    </div>
+
+                    <div>
+                        <input type="tel" id="hero_phone" name="phone" placeholder="+7 (999) 123-45-67 *" required>
+                    </div>
+
+                    <div>
+                        <input type="email" id="hero_email" name="email" placeholder="Email (необязательно)">
+                    </div>
+
+                    <!-- ГАЛОЧКА СОГЛАСИЯ -->
+                    <div class="checkbox-wrap">
+                        <input type="checkbox" id="hero_consent" name="consent" required>
+                        <label for="hero_consent">
+                            Я даю согласие на обработку моих персональных данных в соответствии с
+                            <a href="privacy.html" target="_blank">Политикой</a>
+                            и принимаю условия <a href="terms.html" target="_blank">Соглашения</a>.
+                            <span style="color: #ef4444;">*</span>
+                        </label>
+                    </div>
+
+                    <button type="submit">
+                        <i class="fas fa-paper-plane"></i> Отправить заявку
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== СКРИПТ ДЛЯ ФОРМЫ В ГЕРОЕ ===== -->
+    <script>
+        function validateHeroForm() {
+            const name = document.getElementById('hero_name').value.trim();
+            const phone = document.getElementById('hero_phone').value.trim();
+            const consent = document.getElementById('hero_consent').checked;
+
+            if (name === '') {
+                alert('Пожалуйста, введите ваше имя.');
+                document.getElementById('hero_name').focus();
+                return false;
+            }
+
+            if (phone === '') {
+                alert('Пожалуйста, введите номер телефона.');
+                document.getElementById('hero_phone').focus();
+                return false;
+            }
+
+            const phoneDigits = phone.replace(/\D/g, '');
+            if (phoneDigits.length < 10) {
+                alert('Введите корректный номер телефона (не менее 10 цифр).');
+                document.getElementById('hero_phone').focus();
+                return false;
+            }
+
+            if (!consent) {
+                alert('Для отправки заявки необходимо дать согласие на обработку персональных данных.');
+                document.getElementById('hero_consent').focus();
+                return false;
+            }
+
+            alert('Спасибо! Ваша заявка принята. Мы свяжемся с вами в ближайшее время.');
+            return true;
+        }
+    </script>
+
+    <!-- ===== 3 НАПРАВЛЕНИЯ УСЛУГ ===== -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Мы решаем <span style="color: #d97706;">3 задачи</span> вашего бизнеса</h2>
+            <p class="section-sub">От простой купли-продажи до сложной логистики с ответственностью за каждый этап.</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>1. Трейдинг (купля-продажа)</h3>
+                    <p>Вы оплачиваете и забираете топливо самовывозом с нашего склада или завода. Прозрачные цены,
+                        полный пакет документов.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-truck"></i>
+                    <h3>2. Доставка с заводов</h3>
+                    <p>Мы привозим топливо напрямую с заводов-изготовителей своим автотранспортом. Без посредников и
+                        наценок.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-route"></i>
+                    <h3>3. Логистика и экспедирование</h3>
+                    <p>Полный цикл: маршрутизация, сопровождение, таможенное оформление (при необходимости), контроль
+                        груза 24/7.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ПОЧЕМУ МЫ (КЛЮЧЕВЫЕ ПРЕИМУЩЕСТВА) ===== -->
+    <section class="why-us">
+        <div class="container">
+            <h2 class="section-title">Почему выбирают <span style="color: #f59e0b;">именно нас</span></h2>
+            <p class="section-sub">4 столпа, которые делают нас лидерами в сегменте оптовых поставок топлива.</p>
+            <div class="why-grid">
+                <div class="why-item">
+                    <i class="fas fa-coins"></i>
+                    <h4>Ценовая политика</h4>
+                    <p>Прямые контракты с заводами и оптимизация логистики позволяют нам предлагать цены на 7-12% ниже
+                        среднерыночных.</p>
+                </div>
+                <div class="why-item">
+                    <i class="fas fa-clock"></i>
+                    <h4>Скорость доставки</h4>
+                    <p>Собственный парк из 30+ машин и диспетчерская служба обеспечивают оперативность. Доставка за 24
+                        часа по ЦФО.</p>
+                </div>
+                <div class="why-item">
+                    <i class="fas fa-headset"></i>
+                    <h4>Высокий уровень сервиса</h4>
+                    <p>Персональный менеджер, онлайн-отслеживание груза, оперативное решение любых вопросов 24/7.</p>
+                </div>
+                <div class="why-item">
+                    <i class="fas fa-hard-hat"></i>
+                    <h4>Безопасность и профессионализм</h4>
+                    <p>Водители с категорией Е, допуском к опасным грузам (ADR). Полная материальная ответственность.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ЭКСКЛЮЗИВ: ЗОНЫ ОТВЕТСТВЕННОСТИ ===== -->
+    <section class="responsibility">
+        <div class="container">
+            <h2 class="section-title">Наша <span style="color: #d97706;">зона ответственности</span></h2>
+            <p class="section-sub">Мы не перекладываем задачи на клиента. Чёткое распределение обязанностей — залог
+                безупречной работы.</p>
+            <div class="resp-grid">
+                <div class="resp-card">
+                    <h4><i class="fas fa-file-signature"></i> Документооборот</h4>
+                    <p>Полное юридическое сопровождение сделки: счета-фактуры, ТТН, сертификаты качества, паспорта
+                        безопасности.</p>
+                </div>
+                <div class="resp-card">
+                    <h4><i class="fas fa-truck-fast"></i> Доставка и разгрузка</h4>
+                    <p>Организация доставки «точно вовремя». Встреча груза, разгрузка на вашем складе, подписание актов.
+                    </p>
+                </div>
+                <div class="resp-card">
+                    <h4><i class="fas fa-shield-virus"></i> Безопасность груза</h4>
+                    <p>Страхование груза на весь период перевозки. Контроль температурного режима и герметичности для
+                        газов.</p>
+                </div>
+                <div class="resp-card">
+                    <h4><i class="fas fa-chart-line"></i> Мониторинг</h4>
+                    <p>GPS-трекинг каждой машины. Ежечасная отчетность о местоположении и статусе доставки.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ОПАСНЫЕ ГРУЗЫ / ЭКСПЕРТИЗА ===== -->
+    <section class="danger-goods">
+        <div class="container danger-flex">
+            <div class="danger-text">
+                <span
+                    style="background: #fef3c7; padding: 4px 16px; border-radius: 30px; font-weight: 600; color: #92400e; display: inline-block; margin-bottom: 12px;">Экспертиза</span>
+                <h2>Перевозка опасных грузов — <span style="color: #d97706;">наш профиль</span></h2>
+                <p style="color: #334155; margin-bottom: 10px;">Работаем с классами 2, 3, 4 и 9 по ДОПОГ. Соблюдаем все
+                    требования безопасности.</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Специальная подготовка водителей и наличие ADR-свидетельств.
+                    </li>
+                    <li><i class="fas fa-check-circle"></i> Согласование маршрутов с ГИБДД и Ространснадзором.</li>
+                    <li><i class="fas fa-check-circle"></i> Предоставляем полный пакет: паспорт безопасности, инструкция
+                        по ликвидации аварий.</li>
+                    <li><i class="fas fa-check-circle"></i> Консультация по классам опасности, упаковке и совместимости
+                        грузов.</li>
+                </ul>
+            </div>
+            <div class="danger-badge">
+                <i class="fas fa-exclamation-triangle"></i>
+                <strong>ДОПОГ</strong>
+                <p style="color: #94a3b8;">Сертификация и допуск к перевозке опасных веществ</p>
+                <div style="margin-top: 20px; background: #f59e0b20; padding: 10px; border-radius: 12px;">
+                    <i class="fas fa-user-shield"></i> 100% водителей с ADR
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA / КОНТАКТ ===== -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>Готовы обсудить вашу партию?</h2>
+            <p>Оставьте заявку, и мы подготовим индивидуальное предложение с лучшей ценой и графиком доставки.</p>
+            <a href="tel:+79397014409" class="cta-btn"><i class="fas fa-phone-alt"></i> Позвонить сейчас</a>
+            <p style="margin-top: 20px; font-size: 14px; color: #64748b;">Или напишите нам: <a
+                    href="mailto:info@lkmotor.ru" style="color: #f59e0b;">info@lkmotor.ru</a></p>
+        </div>
+    </section>
+
+    <!-- ===== ФУТЕР ===== -->
+    <!-- ===== ФУТЕР ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3 style="color: white;">ООО «ЛК-Мотор»</h3>
+                    <p>Оптовая торговля топливом</p>
+                    <p>ОГРН 1075603000076 | ИНН 5603018575</p>
+                </div>
+                <div>
+                    <p><strong style="color: white;">Адрес:</strong> г. Самара, ул. Крупской, 1А,этаж 3, комната 306</p>
+                    <p><strong style="color: white;">Режим работы:</strong> Пн-Пт 8:00–20:00</p>
+                </div>
+                <div>
+                    <p><a href="tel:+79397014409"><i class="fas fa-phone" style="color: #f59e0b;"></i> 8 (939) 701 44
+                            09</a></p>
+                    <p><a href="mailto:info@petrotrade.ru"><i class="fas fa-envelope" style="color: #f59e0b;"></i>
+                            info@lkmotor.ru</a></p>
+                </div>
+            </div>
+
+            <!-- ===== ССЫЛКИ НА ДОКУМЕНТЫ ===== -->
+            <div
+                style="text-align: center; margin: 20px 0 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; font-size: 14px;">
+                <a href="privacy.html" target="_blank" style="color: #94a3b8; text-decoration: none; transition: 0.3s;">
+                    <i class="fas fa-shield-alt" style="color: #f59e0b; margin-right: 5px;"></i> Политика обработки
+                    персональных данных
+                </a>
+                <span style="color: #334155;">|</span>
+                <a href="terms.html" target="_blank" style="color: #94a3b8; text-decoration: none; transition: 0.3s;">
+                    <i class="fas fa-file-contract" style="color: #f59e0b; margin-right: 5px;"></i> Пользовательское
+                    соглашение
+                </a>
+            </div>
+
+            <div class="footer-copy">
+                <p>© 2026 LKMOTOR. Все права защищены. Заявка на попадание в ТОП-5 поставщиков топлива.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+<script src="slaid.js"></script>
+
+
+</html>
