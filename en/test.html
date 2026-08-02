@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Мини-тест | Галина Инглиш</title>
+    <meta
+      name="description"
+      content="Мини-тест уровня английского и готовности к ОГЭ."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&amp;family=Cormorant+Garamond:wght@500;700&amp;family=Manrope:wght@400;500;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-noise"></div>
+
+    <header class="topbar visible" data-reveal="">
+      <a class="topbar-brand" href="index.html"
+        >Галина <span class="script">Инглиш</span></a
+      >
+      <nav class="topbar-nav" aria-label="Навигация">
+        <a href="index.html">На главную</a>
+      </nav>
+      <a href="index.html#cta" class="topbar-cta">Пробный урок</a>
+    </header>
+
+    <main class="layout">
+      <section class="test" id="test">
+        <div class="section-head visible" data-reveal="">
+          <p class="section-label">Мини-тест</p>
+          <h2>
+            Проверьте уровень английского и
+            <span class="script">готовность к ОГЭ</span>
+          </h2>
+          <p>
+            8 коротких вопросов. Результат покажет примерный уровень и зону
+            готовности к экзамену.
+          </p>
+        </div>
+
+        <form class="quiz-form" id="levelQuiz">
+          <article class="quiz-card visible" data-reveal="">
+            <h3>1. She ___ to school every day.</h3>
+            <label
+              ><input type="radio" name="q1" value="0" data-ready="0" />
+              go</label
+            >
+            <label
+              ><input type="radio" name="q1" value="2" data-ready="1" />
+              goes</label
+            >
+            <label
+              ><input type="radio" name="q1" value="0" data-ready="0" />
+              going</label
+            >
+          </article>
+
+          <article class="quiz-card visible" data-reveal="">
+            <h3>
+              2. Выберите правильный перевод: «Я уже сделал домашнюю работу»
+            </h3>
+            <label
+              ><input type="radio" name="q2" value="0" data-ready="0" /> I did
+              homework yesterday.</label
+            >
+            <label
+              ><input type="radio" name="q2" value="2" data-ready="1" /> I have
+              already done my homework.</label
+            >
+            <label
+              ><input type="radio" name="q2" value="1" data-ready="1" /> I do my
+              homework now.</label
+            >
+          </article>
+
+          <article class="quiz-card visible" data-reveal="">
+            <h3>3. They ___ TV when I came home.</h3>
+            <label
+              ><input type="radio" name="q3" value="0" data-ready="0" />
+              watched</label
+            >
+            <label
+              ><input type="radio" name="q3" value="2" data-ready="1" /> were
+              watching</label
+            >
+            <label
+              ><input type="radio" name="q3" value="1" data-ready="0" />
+              watch</label
+            >
+          </article>
+
+          <article class="quiz-card visible" data-reveal="">
+            <h3>4. Choose the best option: “If it rains, we ___ at home.”</h3>
+            <label
+              ><input type="radio" name="q4" value="2" data-ready="1" /> will
+              stay</label
+            >
+            <label
+              ><input type="radio" name="q4" value="0" data-ready="0" />
+              stayed</label
+            >
+            <label
+              ><input type="radio" name="q4" value="1" data-ready="0" />
+              staying</label
+            >
+          </article>
+
+          <article class="quiz-card visible" data-reveal="">
+            <h3>
+              5. Сколько раз в неделю ребенок готов заниматься английским?
+            </h3>
+            <label
+              ><input type="radio" name="q5" value="0" data-ready="0" /> 1 раз
+              или реже</label
+            >
+            <label
+              ><input type="radio" name="q5" value="1" data-ready="1" /> 2
+              раза</label
+            >
+            <label
+              ><input type="radio" name="q5" value="2" data-ready="2" /> 3+
+              раза</label
+            >
+          </article>
+
+          <article class="quiz-card visible" data-reveal="">
+            <h3>6. Насколько спокойно ребенок выполняет задания на время?</h3>
+            <label
+              ><input type="radio" name="q6" value="0" data-ready="0" /> Сильно
+              стрессует</label
+            >
+            <label
+              ><input type="radio" name="q6" value="1" data-ready="1" /> Иногда
+              волнуется</label
+            >
+            <label
+              ><input type="radio" name="q6" value="2" data-ready="2" /> Обычно
+              справляется уверенно</label
+            >
+          </article>
+
+          <article class="quiz-card" data-reveal="">
+            <h3>7. Есть ли опыт написания писем/мини-эссе по шаблону ОГЭ?</h3>
+            <label
+              ><input type="radio" name="q7" value="0" data-ready="0" />
+              Нет</label
+            >
+            <label
+              ><input type="radio" name="q7" value="1" data-ready="1" />
+              Пробовали 1-2 раза</label
+            >
+            <label
+              ><input type="radio" name="q7" value="2" data-ready="2" /> Да,
+              регулярно практикуем</label
+            >
+          </article>
+
+          <article class="quiz-card" data-reveal="">
+            <h3>
+              8. Понимает ли ребенок критерии оценивания ОГЭ (что проверяют)?
+            </h3>
+            <label
+              ><input type="radio" name="q8" value="0" data-ready="0" />
+              Нет</label
+            >
+            <label
+              ><input type="radio" name="q8" value="1" data-ready="1" />
+              Частично</label
+            >
+            <label
+              ><input type="radio" name="q8" value="2" data-ready="2" /> Да,
+              хорошо понимает</label
+            >
+          </article>
+
+          <div class="quiz-actions" data-reveal="">
+            <button class="btn-primary" type="submit">
+              Показать результат
+            </button>
+            <button class="quiz-reset" type="reset">Сбросить ответы</button>
+          </div>
+        </form>
+
+        <article
+          class="quiz-result"
+          id="quizResult"
+          aria-live="polite"
+          hidden=""
+        >
+          <h3 id="quizLevel">Уровень: —</h3>
+          <p id="quizReadiness">Готовность к ОГЭ: —</p>
+          <p id="quizAdvice">Рекомендация появится после прохождения теста.</p>
+        </article>
+
+        <div class="quiz-back" data-reveal="">
+          <a class="btn-primary" href="index.html">Вернуться на сайт</a>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

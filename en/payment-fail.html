@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ошибка оплаты | Галина Инглиш</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .fail-page {
+      max-width: 500px;
+      margin: 120px auto 60px;
+      text-align: center;
+      padding: 40px;
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--line);
+      box-shadow: 0 24px 52px rgba(14, 25, 64, 0.09);
+    }
+    .fail-icon { font-size: 72px; margin-bottom: 20px; }
+    .fail-page h1 { 
+      font-family: "Cormorant Garamond", serif;
+      color: var(--red);
+      font-size: 36px;
+    }
+    .fail-page p {
+      color: var(--muted);
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-noise"></div>
+  <div class="fail-page">
+    <div class="fail-icon">❌</div>
+    <h1>Ошибка при оплате</h1>
+    <p>К сожалению, платеж не прошел. Попробуйте еще раз или выберите другой способ оплаты.</p>
+    <a href="payment.html" class="btn-primary" style="display: inline-block; margin-top: 24px;">Попробовать снова</a>
+  </div>
+</body>
+</html>

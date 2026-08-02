@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Оплата занятий | Галина Инглиш</title>
+    <meta
+      name="description"
+      content="Безопасная оплата занятий английским языком через банк"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&amp;family=Cormorant+Garamond:wght@500;700&amp;family=Manrope:wght@400;500;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-noise"></div>
+
+    <!-- Хедер -->
+    <header class="topbar visible" data-reveal="">
+      <a class="topbar-brand" href="index.html"
+        >Галина <span class="script">Инглиш</span></a
+      >
+      <nav class="topbar-nav" aria-label="Навигация по сайту">
+        <a href="index.html#description">Обо мне</a>
+        <a href="index.html#format">Формат</a>
+        <a href="index.html#pricing">Тарифы</a>
+        <a href="test.html" target="_blank" rel="noopener noreferrer"
+          >Мини-тест</a
+        >
+        <a href="index.html#cases">Кейсы</a>
+        <a href="index.html#reviews">Отзывы</a>
+      </nav>
+      <a href="index.html#cta" class="topbar-cta">Пробный урок</a>
+    </header>
+
+    <main class="layout">
+      <!-- Затемнение при загрузке -->
+      <div class="loading-overlay" id="loadingOverlay">
+        <div class="loader"></div>
+        <p style="color: #666; font-size: 16px;">Обработка платежа...</p>
+      </div>
+
+      <section class="payment-page">
+        <a href="index.html#pricing" class="back-link">← Назад к тарифам</a>
+
+        <h1>Оплата занятий</h1>
+        <p class="subtitle">Безопасный платеж через банк</p>
+
+        <div class="payment-summary">
+          <span class="label">К оплате:</span>
+          <span class="amount" id="displayAmount">7 900 <span>₽</span></span>
+        </div>
+
+        <form class="payment-form" id="paymentForm">
+          <div class="payment-methods">
+            <label class="payment-method selected">
+              <input type="radio" name="method" value="card" checked />
+              <span class="method-icon">💳</span>
+              <span class="method-info">
+                <span class="name">Банковская карта</span>
+                <span class="desc">Visa, Mastercard, МИР</span>
+              </span>
+            </label>
+
+            <label class="payment-method">
+              <input type="radio" name="method" value="sbp" />
+              <span class="method-icon">📱</span>
+              <span class="method-info">
+                <span class="name">СБП</span>
+                <span class="desc">Система быстрых платежей</span>
+              </span>
+            </label>
+          </div>
+
+          <!-- Поля для карты -->
+          <div id="cardFields">
+            <label>
+              <span>Номер карты</span>
+              <input
+                type="text"
+                id="cardNumber"
+                placeholder="0000 0000 0000 0000"
+                maxlength="19"
+                required
+              />
+              <div class="card-icons">
+                <span id="visaIcon">💳</span>
+                <span id="mcIcon">💳</span>
+                <span id="mirIcon">💳</span>
+              </div>
+            </label>
+
+            <div class="form-row">
+              <label>
+                <span>Срок действия</span>
+                <input
+                  type="text"
+                  id="cardExpiry"
+                  placeholder="ММ / ГГ"
+                  maxlength="7"
+                  required
+                />
+              </label>
+              <label>
+                <span>CVV</span>
+                <input
+                  type="text"
+                  id="cardCvv"
+                  placeholder="XXX"
+                  maxlength="4"
+                  required
+                />
+              </label>
+            </div>
+          </div>
+
+          <!-- Поля для СБП (скрыты по умолчанию) -->
+          <div id="sbpFields" style="display: none;">
+            <label>
+              <span>Номер телефона</span>
+              <input
+                type="tel"
+                id="sbpPhone"
+                placeholder="+7 999 999-99-99"
+                required
+              />
+            </label>
+            <p style="font-size: 13px; color: #888; margin-top: -8px;">
+              На номер придет уведомление для подтверждения платежа
+            </p>
+          </div>
+
+          <div class="secure-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor"/>
+              <path d="M7 11V7a5 5 0 0110 0v4" stroke="currentColor"/>
+            </svg>
+            <span>Платеж защищен шифрованием SSL</span>
+          </div>
+
+          <button type="submit" class="btn-pay" id="payBtn">
+            Оплатить
+          </button>
+        </form>
+
+        <div class="payment-footer">
+          <p>
+            Платеж обрабатывается через <strong>Альфа-Банк</strong>.
+            <br />
+            <a href="#">Публичная оферта</a> •
+            <a href="#">Политика конфиденциальности</a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Получаем сумму из URL параметра
+        const urlParams = new URLSearchParams(window.location.search);
+        const amount = urlParams.get("amount");
+        const plan = urlParams.get("plan") || "База";
+
+        if (amount) {
+          document.getElementById("displayAmount").innerHTML =
+            amount + ' <span>₽</span>';
+        }
+
+        // Форматирование номера карты
+        const cardInput = document.getElementById("cardNumber");
+        cardInput.addEventListener("input", function (e) {
+          let value = this.value.replace(/\D/g, "");
+          let formatted = "";
+          for (let i = 0; i < value.length && i < 16; i++) {
+            if (i > 0 && i % 4 === 0) formatted += " ";
+            formatted += value[i];
+          }
+          this.value = formatted;
+          updateCardIcons(value);
+        });
+
+        // Форматирование срока действия
+        const expiryInput = document.getElementById("cardExpiry");
+        expiryInput.addEventListener("input", function (e) {
+          let value = this.value.replace(/\D/g, "");
+          if (value.length >= 2) {
+            this.value = value.slice(0, 2) + " / " + value.slice(2, 4);
+          } else {
+            this.value = value;
+          }
+        });
+
+        // Ограничение на ввод CVV только цифрами
+        const cvvInput = document.getElementById("cardCvv");
+        cvvInput.addEventListener("input", function (e) {
+          this.value = this.value.replace(/\D/g, "");
+        });
+
+        // Переключение способов оплаты
+        document.querySelectorAll('input[name="method"]').forEach((radio) => {
+          radio.addEventListener("change", function () {
+            document.querySelectorAll(".payment-method").forEach((el) => {
+              el.classList.toggle("selected", el.querySelector('input[type="radio"]') === this);
+            });
+
+            const cardFields = document.getElementById("cardFields");
+            const sbpFields = document.getElementById("sbpFields");
+
+            if (this.value === "card") {
+              cardFields.style.display = "block";
+              sbpFields.style.display = "none";
+            } else {
+              cardFields.style.display = "none";
+              sbpFields.style.display = "block";
+            }
+          });
+        });
+
+        // Обновление иконок карт
+        function updateCardIcons(value) {
+          const firstDigit = value.charAt(0);
+          const visaIcon = document.getElementById("visaIcon");
+          const mcIcon = document.getElementById("mcIcon");
+          const mirIcon = document.getElementById("mirIcon");
+
+          visaIcon.style.opacity = firstDigit === "4" ? "1" : "0.4";
+          mcIcon.style.opacity =
+            firstDigit === "5" || firstDigit === "2" ? "1" : "0.4";
+          mirIcon.style.opacity = firstDigit === "2" ? "1" : "0.4";
+        }
+
+        // Обработка отправки формы
+        document
+          .getElementById("paymentForm")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const method = document.querySelector(
+              'input[name="method"]:checked'
+            ).value;
+            const loadingOverlay = document.getElementById("loadingOverlay");
+            const payBtn = document.getElementById("payBtn");
+
+            // Базовая валидация
+            if (method === "card") {
+              const cardNum = document
+                .getElementById("cardNumber")
+                .value.replace(/\s/g, "");
+              const expiry = document.getElementById("cardExpiry").value;
+              const cvv = document.getElementById("cardCvv").value;
+
+              if (cardNum.length < 16) {
+                alert("Пожалуйста, введите полный номер карты.");
+                return;
+              }
+
+              if (expiry.length < 7) {
+                alert("Пожалуйста, введите срок действия карты.");
+                return;
+              }
+
+              if (cvv.length < 3) {
+                alert("Пожалуйста, введите CVV-код.");
+                return;
+              }
+            } else {
+              const phone = document.getElementById("sbpPhone").value;
+              if (phone.length < 10) {
+                alert("Пожалуйста, введите корректный номер телефона.");
+                return;
+              }
+            }
+
+            // Имитация отправки платежа
+            payBtn.disabled = true;
+            loadingOverlay.classList.add("active");
+
+            // Эмуляция запроса к API Альфа-Банка
+            setTimeout(function () {
+              loadingOverlay.classList.remove("active");
+
+              // Успешная оплата
+              const success = Math.random() > 0.1;
+
+              if (success) {
+                alert(
+                  "✅ Оплата успешно прошла!\nСпасибо за доверие. Я свяжусь с вами в ближайшее время."
+                );
+                window.location.href = "index.html";
+              } else {
+                alert(
+                  "❌ Произошла ошибка при оплате.\nПопробуйте еще раз или выберите другой способ оплаты."
+                );
+                payBtn.disabled = false;
+              }
+            }, 2500);
+          });
+      });
+    </script>
+  </body>
+</html>
